@@ -16,7 +16,17 @@
 
 @layer base {
   body {
-    @apply bg-background-dark text-slate-100 font-body antialiased overflow-x-clip selection:bg-primary selection:text-white;
+    background-color: var(--color-background-dark, #0B0B0B);
+    color: #f1f5f9;
+    font-family: var(--font-body, "Inter", sans-serif);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;
+  }
+  
+  ::selection {
+    background-color: var(--color-primary, #ff2e2e);
+    color: #ffffff;
   }
 }
 
