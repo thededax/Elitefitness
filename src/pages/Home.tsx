@@ -26,16 +26,15 @@ export default function Home() {
       <section ref={heroRef} className="relative min-h-[82vh] md:min-h-screen flex items-center overflow-hidden bg-background-dark py-12 md:py-0">
         {/* Background Image with Parallax — dark gym atmosphere */}
         <motion.div style={{ y }} className="absolute inset-0 -top-[10%] -bottom-[10%]">
-          {/* PLACEHOLDER — replace with real photo: wide-angle shot of Elite gym floor during peak hours, dramatic overhead lighting */}
           <img 
-            src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop"
+            src="/images/hero-1.png"
             alt="Elite Fitness Studio Interior" 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-center scale-105 md:scale-100 transition-transform duration-700"
           />
-          {/* Multi-layer overlay for depth and text readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-background-dark via-background-dark/80 to-background-dark/30"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-background-dark/60"></div>
-          <div className="absolute inset-0 bg-background-dark/40"></div>
+          {/* Multi-layer overlay for depth, contrast, and mobile text readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-background-dark via-background-dark/70 sm:via-background-dark/80 to-background-dark/20"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-background-dark/50"></div>
+          <div className="absolute inset-0 bg-background-dark/30"></div>
         </motion.div>
 
         {/* Hero Content */}
