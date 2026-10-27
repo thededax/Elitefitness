@@ -19,41 +19,41 @@ export default function About() {
         <title>Our Story | Elite Zumba & Fitness Studio — Bhagalpur</title>
         <meta name="description" content="Learn about Elite Fitness Studio's journey since 2018. From a community gathering to Bhagalpur's premier fitness destination with 500+ members and 12+ expert trainers." />
       </Helmet>
-      <section ref={heroRef} className="relative min-h-[55vh] md:h-[82vh] flex items-center overflow-hidden bg-[var(--bg-canvas,#080808)]">
-        <motion.div style={{ y }} className="absolute inset-0 -top-[10%] -bottom-[10%]">
-          {/* Looping Ambient Background Video */}
+      <section ref={heroRef} className="relative min-h-[480px] sm:min-h-[540px] md:h-[76vh] lg:h-[82vh] flex items-center overflow-hidden bg-[var(--bg-canvas,#080808)]">
+        <motion.div style={{ y }} className="absolute inset-0 w-full h-full">
+          {/* Looping Ambient Background Video - 16:9 Landscape, unzoomed and responsive */}
           <video
             autoPlay
             loop
             muted
             playsInline
             preload="auto"
-            className="w-full h-full object-cover filter contrast-[1.06] brightness-[0.92]"
+            className="w-full h-full object-contain md:object-cover object-center filter contrast-[1.05] brightness-[0.94]"
           >
             <source src="/videos/our-story-bg.mp4" type="video/mp4" />
           </video>
 
-          {/* Left-anchored editorial shadow/vignette ensuring 'Our Story' text is 100% visible while preserving video clarity */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/45 to-transparent pointer-events-none" />
+          {/* Left-anchored editorial shadow ensuring 'Our Story' text is 100% visible while preserving video clarity */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/40 to-transparent pointer-events-none" />
           
           {/* Top & bottom subtle fade into navbar & canvas */}
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-canvas,#080808)] via-transparent to-black/60 pointer-events-none" />
 
           {/* Subtle red ambient glow accent */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_50%,rgba(215,0,21,0.14),transparent_55%)] pointer-events-none" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_50%,rgba(215,0,21,0.12),transparent_55%)] pointer-events-none" />
         </motion.div>
 
-        <div className="relative z-20 px-6 sm:px-10 lg:px-24 w-full pt-28 md:pt-0">
-          <div className="flex flex-col gap-0 max-w-4xl relative">
+        <div className="relative z-20 px-4 sm:px-8 lg:px-24 w-full py-16 md:py-0">
+          <div className="flex flex-col gap-0 max-w-2xl relative">
             
-            {/* Subtle black card backdrop behind 'Our Story' text to guarantee crisp contrast */}
-            <div className="absolute -inset-4 sm:-inset-6 bg-black/40 backdrop-blur-[2px] rounded-3xl -z-10 pointer-events-none border border-white/5" />
+            {/* Subtle dark backdrop glass card specifically behind 'Our Story' text to guarantee crisp contrast */}
+            <div className="absolute -inset-3 sm:-inset-5 bg-black/60 backdrop-blur-md rounded-2xl -z-10 pointer-events-none border border-white/10 shadow-2xl" />
 
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-3 px-3.5 py-1.5 rounded-full border border-[var(--border-subtle)] bg-black/75 backdrop-blur-md text-[var(--accent-secondary,#FF2E44)] text-xs font-mono font-semibold uppercase tracking-wider mb-5 w-fit"
+              className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full border border-white/15 bg-black/80 backdrop-blur-md text-[var(--accent-secondary,#FF2E44)] text-xs font-mono font-semibold uppercase tracking-wider mb-4 w-fit"
             >
               <span className="w-2 h-2 rounded-full bg-[var(--accent-primary,#D70015)] animate-pulse" />
               <span>SINCE 2018 • THE SANCTUARY</span>
@@ -63,16 +63,16 @@ export default function About() {
               <motion.span 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-                className="block text-[15vw] md:text-[10vw] lg:text-[8rem] font-display font-extrabold leading-[0.88] tracking-tighter text-white uppercase drop-shadow-[0_4px_24px_rgba(0,0,0,0.85)]"
+                transition={{ delay: 0.35 }}
+                className="block text-5xl sm:text-7xl lg:text-8xl font-display font-extrabold leading-[0.88] tracking-tighter text-white uppercase drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]"
               >
                 OUR
               </motion.span>
               <motion.span 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 }}
-                className="block text-[15vw] md:text-[10vw] lg:text-[8rem] font-display font-extrabold leading-[0.88] tracking-tighter uppercase drop-shadow-[0_0_35px_rgba(215,0,21,0.45)]"
+                transition={{ delay: 0.5 }}
+                className="block text-5xl sm:text-7xl lg:text-8xl font-display font-extrabold leading-[0.88] tracking-tighter uppercase drop-shadow-[0_0_35px_rgba(215,0,21,0.5)]"
               >
                 <span className="text-[var(--accent-primary,#D70015)] italic">STORY</span>
               </motion.span>
@@ -81,8 +81,8 @@ export default function About() {
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8 }}
-              className="mt-6 md:mt-8 text-[var(--text-secondary,#D0D0D0)] text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed font-normal bg-black/55 backdrop-blur-md p-4 sm:p-5 rounded-xl border border-white/10"
+              transition={{ delay: 0.65 }}
+              className="mt-4 md:mt-6 text-[var(--text-secondary,#D0D0D0)] text-xs sm:text-sm md:text-base max-w-xl leading-relaxed font-normal bg-black/45 backdrop-blur-sm p-3.5 sm:p-4 rounded-xl border border-white/5"
             >
               From a humble community park gathering to Bhagalpur's premier high-energy fitness sanctuary. We didn't just build a gym; we built an uncompromising movement.
             </motion.p>
