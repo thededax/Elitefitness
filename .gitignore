@@ -5,3 +5,6 @@ coverage/
 *.log
 .env*
 !.env.example
+hero section bg photo/
+trainer photo/
+

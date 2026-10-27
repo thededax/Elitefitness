@@ -30,193 +30,81 @@ export default function Home() {
       </Helmet>
 
       {/* =========================================================================
-          SECTION 1: 7/5 ASYMMETRICAL PERFORMANCE SPLIT HERO (VICTORY CRIMSON RED)
+          SECTION 1: CINEMATIC FULL-BLEED ATHLETE HERO (VICTORY CRIMSON RED)
           ========================================================================= */}
       <section
         ref={heroRef}
-        className="relative min-h-[92vh] lg:min-h-screen flex items-center pt-24 sm:pt-28 pb-16 lg:py-0 bg-[var(--bg-canvas,#080808)] overflow-hidden"
+        className="relative min-h-[92vh] lg:min-h-screen flex items-center pt-28 pb-20 lg:py-0 bg-[var(--bg-canvas,#080808)] overflow-hidden"
       >
-        {/* Subtle Background Grid & Crimson Glow Overlay */}
-        <div className="absolute inset-0 bg-grid opacity-40 pointer-events-none" />
-        <div className="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-[var(--accent-primary,#D70015)]/12 blur-[130px] pointer-events-none" />
-        <div className="absolute top-1/2 -right-40 w-96 h-96 rounded-full bg-[var(--accent-primary,#D70015)]/8 blur-[150px] pointer-events-none" />
+        {/* Full-Bleed Cinematic Background Image with Parallax & Directional Gradient */}
+        <motion.div
+          style={{ y: yParallax }}
+          className="absolute inset-0 -top-[10%] -bottom-[10%] pointer-events-none select-none"
+        >
+          <img
+            src="/images/hero-deadlift.png"
+            alt="Elite Fitness Athlete Deadlifting"
+            className="w-full h-full object-cover object-right md:object-center lg:object-right gym-photo-grade"
+          />
+          {/* Left-to-right gradient: dark obsidian on the left for maximum text contrast, fading right to showcase the athlete */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[var(--bg-canvas,#080808)] via-[var(--bg-canvas,#080808)]/85 to-[var(--bg-canvas,#080808)]/25 sm:via-[var(--bg-canvas,#080808)]/75 lg:to-transparent" />
+          {/* Top and bottom gradients for seamless header and section blending */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-canvas,#080808)] via-transparent to-[var(--bg-canvas,#080808)]/60" />
+        </motion.div>
 
+        {/* Subtle Ambient Crimson Atmosphere Glow */}
+        <div className="absolute top-1/3 -left-32 w-96 h-96 rounded-full bg-[var(--accent-primary,#D70015)]/15 blur-[140px] pointer-events-none" />
+
+        {/* Content Container (Left-Aligned, Pure Minimalism & Zero Clutter) */}
         <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          <div className="max-w-2xl lg:max-w-3xl flex flex-col items-start">
             
-            {/* Left 7 Columns: Core Value Proposition & Primary Conversion Cluster */}
-            <div className="lg:col-span-7 flex flex-col items-start">
-              
-              {/* Eyebrow Badge: Verified Hours & Status */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[var(--border-accent,rgba(215,0,21,0.45))] bg-[var(--bg-surface,#121212)]/90 backdrop-blur-md mb-6 shadow-md max-w-full"
+            {/* Bold Condensed Display H1 Headline */}
+            <motion.h1
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              className="text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-display font-extrabold uppercase text-[var(--text-primary,#FFFFFF)] leading-[0.92] tracking-tight mb-6"
+            >
+              ENGINEER YOUR <br />
+              <span className="text-[var(--accent-primary,#D70015)] drop-shadow-[0_0_35px_rgba(215,0,21,0.45)]">
+                STRONGEST SELF.
+              </span>
+            </motion.h1>
+
+            {/* High-Clarity Anti-Fluff Subcopy */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              className="text-base sm:text-lg md:text-xl text-[var(--text-secondary,#A0A0A0)] font-normal leading-relaxed max-w-[48ch] mb-10"
+            >
+              Bhagalpur's 5,000 sq.ft high-performance sanctuary. Olympic barbell platforms, high-energy Zumba, and certified coaching mentorship. Start your transformation with a zero-risk 3-day pass.
+            </motion.p>
+
+            {/* Dual Conversion CTA Cluster */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto"
+            >
+              <button
+                onClick={() => selectProgramAndScroll('3-Day Free Trial Pass')}
+                className="px-8 py-4 rounded-xl text-xs sm:text-sm font-mono font-extrabold uppercase tracking-wider bg-[var(--accent-primary,#D70015)] text-white hover:bg-white hover:text-black transition-all shadow-[0_0_35px_rgba(215,0,21,0.5)] flex items-center justify-center gap-2 active:scale-95"
               >
-                <span className="w-2 h-2 rounded-full bg-[var(--accent-primary,#D70015)] animate-pulse shrink-0" />
-                <span className="text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-wider text-[var(--accent-secondary,#FF2E44)] leading-tight">
-                  OPEN DAILY 6:00 AM – 10:00 PM • KOTWALI CHOWK, BHAGALPUR
-                </span>
-              </motion.div>
+                <span>Claim Free 3-Day Trial Pass</span>
+                <span className="material-symbols-outlined text-base">arrow_forward</span>
+              </button>
 
-              {/* Bold Condensed Display H1 Headline */}
-              <motion.h1
-                initial={{ opacity: 0, y: 24 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.55, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-                className="text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-display font-extrabold uppercase text-[var(--text-primary,#FFFFFF)] leading-[0.92] tracking-tight mb-6"
+              <a
+                href="#schedule"
+                className="px-7 py-4 rounded-xl text-xs sm:text-sm font-mono font-bold uppercase tracking-wider bg-[var(--bg-surface,#121212)]/80 backdrop-blur-md text-[var(--text-primary,#FFFFFF)] border border-white/15 hover:border-[var(--accent-primary,#D70015)] hover:text-[var(--accent-secondary,#FF2E44)] transition-all flex items-center justify-center gap-2"
               >
-                ENGINEER YOUR <br />
-                <span className="text-[var(--accent-primary,#D70015)] drop-shadow-[0_0_35px_rgba(215,0,21,0.4)]">STRONGEST SELF.</span>
-              </motion.h1>
-
-              {/* High-Clarity Anti-Fluff Subcopy */}
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                className="text-sm sm:text-lg text-[var(--text-secondary,#A0A0A0)] font-normal leading-relaxed max-w-[54ch] mb-8"
-              >
-                Bhagalpur's 5,000 sq.ft high-performance sanctuary. Olympic barbell platforms, high-energy Zumba, and certified coaching mentorship. No complex commitments — start with a zero-risk 3-day pass.
-              </motion.p>
-
-              {/* Dual Conversion CTA Cluster */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto mb-10"
-              >
-                <button
-                  onClick={() => selectProgramAndScroll('3-Day Free Trial Pass')}
-                  className="px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl text-xs sm:text-sm font-mono font-extrabold uppercase tracking-wider bg-[var(--accent-primary,#D70015)] text-white hover:bg-white hover:text-black transition-all shadow-[0_0_30px_rgba(215,0,21,0.45)] flex items-center justify-center gap-2 active:scale-95"
-                >
-                  <span>Claim Free 3-Day Trial Pass</span>
-                  <span className="material-symbols-outlined text-base">arrow_forward</span>
-                </button>
-
-                <a
-                  href="#schedule"
-                  className="px-6 sm:px-7 py-3.5 sm:py-4 rounded-xl text-xs sm:text-sm font-mono font-bold uppercase tracking-wider bg-[var(--bg-surface,#121212)] text-[var(--text-primary,#FFFFFF)] border border-white/15 hover:border-[var(--accent-primary,#D70015)] hover:text-[var(--accent-secondary,#FF2E44)] transition-all flex items-center justify-center gap-2"
-                >
-                  <span className="material-symbols-outlined text-base">calendar_month</span>
-                  <span>View Class Schedule</span>
-                </a>
-              </motion.div>
-
-              {/* 4-Metric Credibility & Proof Strip */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-6 pt-6 border-t border-[var(--border-subtle)] w-full"
-              >
-                <div>
-                  <div className="text-xl sm:text-2xl lg:text-3xl font-mono font-bold text-[var(--text-primary)]">
-                    500+
-                  </div>
-                  <div className="text-[9px] sm:text-[10px] font-mono uppercase tracking-widest text-[var(--text-muted)] mt-0.5">
-                    Active Members
-                  </div>
-                </div>
-
-                <div>
-                  <div className="text-xl sm:text-2xl lg:text-3xl font-mono font-bold text-[var(--accent-primary,#D70015)]">
-                    6+ Yrs
-                  </div>
-                  <div className="text-[9px] sm:text-[10px] font-mono uppercase tracking-widest text-[var(--text-muted)] mt-0.5">
-                    Est. 2018 Bhagalpur
-                  </div>
-                </div>
-
-                <div>
-                  <div className="text-xl sm:text-2xl lg:text-3xl font-mono font-bold text-[var(--text-primary)] flex items-center gap-1">
-                    4.9 <span className="material-symbols-outlined text-[var(--accent-primary,#D70015)] text-base sm:text-lg">star</span>
-                  </div>
-                  <div className="text-[9px] sm:text-[10px] font-mono uppercase tracking-widest text-[var(--text-muted)] mt-0.5">
-                    Google Reviews
-                  </div>
-                </div>
-
-                <div>
-                  <div className="text-xl sm:text-2xl lg:text-3xl font-mono font-bold text-[var(--text-primary)]">
-                    25+
-                  </div>
-                  <div className="text-[9px] sm:text-[10px] font-mono uppercase tracking-widest text-[var(--text-muted)] mt-0.5">
-                    Weekly Classes
-                  </div>
-                </div>
-              </motion.div>
-
-            </div>
-
-            {/* Right 5 Columns: Framed 4:5 Visual with Floating Quick Goal Matcher */}
-            <div className="lg:col-span-5 relative mt-6 lg:mt-0">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.96 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                className="relative rounded-2xl overflow-hidden border border-[var(--border-subtle)] bg-[var(--bg-surface,#121212)] aspect-[4/5] magazine-shadow"
-              >
-                {/* Hero Athlete Image with Unified Athletic Filter */}
-                <motion.div style={{ y: yParallax }} className="absolute inset-0 -top-[10%] -bottom-[10%]">
-                  <img
-                    src="/images/hero-1.png"
-                    alt="Elite Fitness Athlete & Facility"
-                    className="w-full h-full object-cover gym-photo-grade"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-canvas,#080808)] via-[var(--bg-canvas,#080808)]/30 to-transparent" />
-                </motion.div>
-
-                {/* Floating Glassmorphic Quick Goal Matcher Card */}
-                <div className="absolute bottom-3 left-3 right-3 sm:bottom-5 sm:left-5 sm:right-5 z-20 rounded-xl border border-[var(--border-accent,rgba(215,0,21,0.45))] bg-[var(--bg-surface,#121212)]/95 backdrop-blur-xl p-3.5 sm:p-5 shadow-2xl">
-                  <div className="flex items-center justify-between mb-2 sm:mb-3">
-                    <span className="text-[10px] font-mono uppercase font-bold text-[var(--accent-secondary,#FF2E44)] tracking-wider">
-                      🎯 Quick Goal Matcher
-                    </span>
-                    <span className="text-[9px] sm:text-[10px] font-mono text-[var(--text-muted)]">
-                      Instant Pathway
-                    </span>
-                  </div>
-                  
-                  <p className="text-[11px] sm:text-xs text-[var(--text-primary)] font-semibold mb-2 sm:mb-3">
-                    What is your primary fitness focus?
-                  </p>
-
-                  <div className="grid grid-cols-1 gap-1.5 sm:gap-2">
-                    <button
-                      onClick={() => selectProgramAndScroll('Strength & Hypertrophy')}
-                      className="px-3 py-1.5 sm:py-2 rounded-lg text-left text-[11px] sm:text-xs font-mono font-semibold bg-[var(--bg-surface-elevated,#181818)] hover:bg-[var(--accent-primary,#D70015)] hover:text-white border border-white/5 transition-all flex items-center justify-between group"
-                    >
-                      <span>🏋️ Strength & Hypertrophy</span>
-                      <span className="text-[9px] sm:text-[10px] uppercase font-bold text-[var(--text-muted)] group-hover:text-white">
-                        Explore →
-                      </span>
-                    </button>
-                    <button
-                      onClick={() => selectProgramAndScroll('Zumba Energy & Dance Fitness')}
-                      className="px-3 py-1.5 sm:py-2 rounded-lg text-left text-[11px] sm:text-xs font-mono font-semibold bg-[var(--bg-surface-elevated,#181818)] hover:bg-[var(--accent-primary,#D70015)] hover:text-white border border-white/5 transition-all flex items-center justify-between group"
-                    >
-                      <span>💃 Zumba Energy & Fat Loss</span>
-                      <span className="text-[9px] sm:text-[10px] uppercase font-bold text-[var(--text-muted)] group-hover:text-white">
-                        Explore →
-                      </span>
-                    </button>
-                    <button
-                      onClick={() => selectProgramAndScroll('1-on-1 Elite Coaching')}
-                      className="px-3 py-1.5 sm:py-2 rounded-lg text-left text-[11px] sm:text-xs font-mono font-semibold bg-[var(--bg-surface-elevated,#181818)] hover:bg-[var(--accent-primary,#D70015)] hover:text-white border border-white/5 transition-all flex items-center justify-between group"
-                    >
-                      <span>🎯 1-on-1 Private Mentorship</span>
-                      <span className="text-[9px] sm:text-[10px] uppercase font-bold text-[var(--text-muted)] group-hover:text-white">
-                        Explore →
-                      </span>
-                    </button>
-                  </div>
-                </div>
-
-              </motion.div>
-            </div>
+                <span className="material-symbols-outlined text-base">calendar_month</span>
+                <span>View Class Schedule</span>
+              </a>
+            </motion.div>
 
           </div>
         </div>
