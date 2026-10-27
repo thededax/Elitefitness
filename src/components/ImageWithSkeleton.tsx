@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, type ImgHTMLAttributes } from 'react';
 import { motion, AnimatePresence, HTMLMotionProps } from 'framer-motion';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
@@ -8,7 +8,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export type ImageWithSkeletonProps = Omit<React.ImgHTMLAttributes<HTMLImageElement>, 'onDragStart' | 'onDragEnd' | 'onDrag' | 'ref' | 'onAnimationStart'> & {
+export type ImageWithSkeletonProps = Omit<ImgHTMLAttributes<HTMLImageElement>, 'onDragStart' | 'onDragEnd' | 'onDrag' | 'ref' | 'onAnimationStart'> & {
   containerClassName?: string;
 };
 

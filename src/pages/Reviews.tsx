@@ -127,12 +127,12 @@ export default function Reviews() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1 }}
-              className="flex flex-wrap gap-6 pt-4"
+              className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6 pt-4"
             >
-              <button className="bg-primary hover:bg-white hover:text-primary transition-all px-12 py-5 text-sm font-bold uppercase tracking-widest-plus">
+              <button className="bg-primary hover:bg-white hover:text-primary transition-all px-6 sm:px-12 py-3.5 sm:py-5 text-sm font-bold uppercase tracking-widest-plus w-full sm:w-auto text-center">
                 Write a Review
               </button>
-              <button className="border border-white/20 hover:border-primary hover:bg-primary transition-all px-10 py-4 text-xs font-bold uppercase tracking-widest-plus">
+              <button className="border border-white/20 hover:border-primary hover:bg-primary transition-all px-6 sm:px-10 py-3.5 sm:py-4 text-xs font-bold uppercase tracking-widest-plus w-full sm:w-auto text-center">
                 View Gallery
               </button>
             </motion.div>
@@ -142,11 +142,11 @@ export default function Reviews() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="relative group"
+            className="relative group w-full sm:w-auto"
           >
             <div className="absolute -inset-4 bg-primary/10 blur-3xl rounded-full opacity-30 group-hover:opacity-50 transition-opacity"></div>
-            <div className="relative bg-surface p-8 md:p-12 rounded-none border border-white/10 glow-red min-w-[300px] md:min-w-[360px] flex flex-col items-center">
-              <div className="absolute -top-8 md:-top-12 -right-8 md:-right-12 text-7xl md:text-9xl font-headline text-white/5 select-none leading-none">4.9</div>
+            <div className="relative bg-surface p-6 sm:p-8 md:p-12 rounded-none border border-white/10 glow-red w-full sm:min-w-[300px] md:min-w-[360px] flex flex-col items-center max-w-full overflow-hidden">
+              <div className="absolute -top-6 md:-top-12 -right-4 md:-right-12 text-6xl md:text-9xl font-headline text-white/5 select-none leading-none pointer-events-none">4.9</div>
               <div className="text-[80px] md:text-[120px] font-headline text-white leading-none mb-2 relative">
                 4.9<span className="text-primary">/</span>5
               </div>
@@ -204,7 +204,7 @@ export default function Reviews() {
             <button className="h-12 w-12 flex items-center justify-center border border-white/10 bg-surface hover:border-primary transition-colors">
               <span className="material-symbols-outlined text-xl">filter_list</span>
             </button>
-            <select className="bg-surface border border-white/10 text-white/70 text-xs font-bold uppercase tracking-widest px-4 md:px-6 py-3 focus:border-primary focus:ring-0 appearance-none flex-1 md:min-w-[180px]">
+            <select className="bg-surface border border-white/10 text-white/70 text-base md:text-xs font-bold uppercase tracking-widest px-4 md:px-6 py-3 focus:border-primary focus:ring-0 appearance-none flex-1 md:min-w-[180px]">
               <option>Newest First</option>
               <option>Highest Rated</option>
               <option>Oldest First</option>

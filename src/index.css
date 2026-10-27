@@ -1,93 +1,178 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
-
 @import "tailwindcss";
 
+:root {
+  --bg-canvas: #080808;
+  --bg-surface: #121212;
+  --bg-surface-elevated: #181818;
+  --bg-glass: rgba(18, 18, 18, 0.85);
+  --accent-primary: #D70015;       /* Bulls & UFC Victory Crimson */
+  --accent-secondary: #FF2E44;     /* Kinetic Crimson / High-Urgency */
+  --accent-deep: #9E0010;          /* Deep Crimson Shadow */
+  --text-primary: #FFFFFF;         /* Stark Crisp White */
+  --text-secondary: #A0A0A0;       /* Cool Titanium Gray */
+  --text-muted: #707070;
+  --border-subtle: rgba(255, 255, 255, 0.10);
+  --border-accent: rgba(215, 0, 21, 0.45);
+
+  --font-display: 'Barlow Condensed', sans-serif;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
 @theme {
-  --color-primary: #ff2e2e;
-  --color-background-dark: #0B0B0B;
-  --color-surface: #1A1A1A;
+  --color-canvas: #080808;
+  --color-surface: #121212;
+  --color-surface-elevated: #181818;
+  --color-crimson: #D70015;
+  --color-primary: #D70015;
+  --color-brand-red: #D70015;
+  --color-accent-secondary: #FF2E44;
+  --color-background-dark: #080808;
 
-  --font-body: "Inter", sans-serif;
-  --font-headline: "Bebas Neue", sans-serif;
+  --font-display: 'Barlow Condensed', sans-serif;
+  --font-headline: 'Barlow Condensed', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 
-  --tracking-widest-plus: 0.3em;
+  --tracking-widest-plus: 0.25em;
 }
 
 @layer base {
-  body {
-    background-color: var(--color-background-dark, #0B0B0B);
-    color: #f1f5f9;
-    font-family: var(--font-body, "Inter", sans-serif);
+  html, body {
+    background-color: var(--bg-canvas, #080808);
+    color: var(--text-primary, #FFFFFF);
+    font-family: var(--font-sans, 'Plus Jakarta Sans', sans-serif);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    overflow-x: clip;
+    overflow-x: hidden;
+    max-width: 100vw;
+    -webkit-tap-highlight-color: transparent;
+    line-height: 1.65;
   }
   
   ::selection {
-    background-color: var(--color-primary, #ff2e2e);
-    color: #ffffff;
+    background-color: var(--accent-primary, #D70015);
+    color: #FFFFFF;
+  }
+
+  /* Accessible focus indicators across all interactive elements */
+  :focus-visible {
+    outline: 2px solid var(--accent-primary, #D70015);
+    outline-offset: 3px;
   }
 }
 
 @layer utilities {
+  .font-display {
+    font-family: var(--font-display, 'Barlow Condensed', sans-serif);
+  }
+  .font-mono {
+    font-family: var(--font-mono, 'JetBrains Mono', monospace);
+    font-variant-numeric: tabular-nums;
+  }
+  .font-sans {
+    font-family: var(--font-sans, 'Plus Jakarta Sans', sans-serif);
+  }
+
+  /* Cohesive athletic photo grading */
+  .gym-photo-grade {
+    filter: contrast(1.10) saturate(0.88);
+  }
+
   .text-outline {
-    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.35);
     color: transparent;
   }
+
   .bg-grid {
-    background-image: radial-gradient(rgba(255, 46, 46, 0.1) 1px, transparent 1px);
-    background-size: 40px 40px;
+    background-image: radial-gradient(rgba(215, 0, 21, 0.12) 1px, transparent 1px);
+    background-size: 32px 32px;
   }
+
   .magazine-shadow {
-    box-shadow: 50px 50px 100px -20px rgba(0,0,0,0.5);
+    box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.9);
+  }
+
+  /* Premium Ruby & Crimson Glow utilities */
+  .ruby-glow {
+    text-shadow: 0 0 25px rgba(215, 0, 21, 0.55);
   }
   .red-glow {
-    text-shadow: 0 0 20px rgba(255, 46, 46, 0.5);
+    text-shadow: 0 0 25px rgba(215, 0, 21, 0.55);
+  }
+  .volt-glow {
+    text-shadow: 0 0 25px rgba(215, 0, 21, 0.55);
+  }
+
+  .ruby-glow-box {
+    box-shadow: 0 0 35px rgba(215, 0, 21, 0.35);
   }
   .red-glow-box {
-    box-shadow: 0 0 30px rgba(255, 46, 46, 0.15);
+    box-shadow: 0 0 35px rgba(215, 0, 21, 0.35);
+  }
+  .volt-glow-box {
+    box-shadow: 0 0 35px rgba(215, 0, 21, 0.35);
+  }
+
+  .ruby-glow-strong {
+    box-shadow: 0 0 55px rgba(215, 0, 21, 0.45);
   }
   .red-glow-strong {
-    box-shadow: 0 0 50px rgba(255, 46, 46, 0.3);
+    box-shadow: 0 0 55px rgba(215, 0, 21, 0.45);
   }
+  .volt-glow-strong {
+    box-shadow: 0 0 55px rgba(215, 0, 21, 0.45);
+  }
+
   .glow-red {
-    box-shadow: 0 0 20px -5px rgba(255, 46, 46, 0.2);
+    box-shadow: 0 0 25px -5px rgba(215, 0, 21, 0.35);
   }
+  .glow-volt {
+    box-shadow: 0 0 25px -5px rgba(215, 0, 21, 0.35);
+  }
+
   .glow-red-hover:hover {
-    box-shadow: 0 0 30px -5px rgba(255, 46, 46, 0.4);
+    box-shadow: 0 0 35px -5px rgba(215, 0, 21, 0.55);
   }
+  .glow-volt-hover:hover {
+    box-shadow: 0 0 35px -5px rgba(215, 0, 21, 0.55);
+  }
+
   .glass-card {
-    background: rgba(26, 26, 26, 0.8);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 46, 46, 0.1);
+    background: rgba(18, 18, 18, 0.85);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.10);
   }
+
+  .glass-elevated {
+    background: rgba(24, 24, 24, 0.90);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(215, 0, 21, 0.35);
+  }
+
   .glow-border:focus-within {
-    box-shadow: 0 0 15px rgba(255, 46, 46, 0.3);
-    border-color: #ff2e2e;
+    box-shadow: 0 0 15px rgba(215, 0, 21, 0.45);
+    border-color: #D70015;
   }
-  
-  .masonry-brick {
-    break-inside: avoid;
-    margin-bottom: 2rem;
-  }
-  @media (min-width: 768px) {
-    .masonry-container {
-      column-count: 2;
-      column-gap: 2rem;
-    }
-  }
-  @media (min-width: 1024px) {
-    .masonry-container {
-      column-count: 3;
-      column-gap: 2.5rem;
-    }
-  }
+
   .hide-scrollbar::-webkit-scrollbar {
     display: none;
   }
   .hide-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+}
+
+/* Reduced Motion Mode (WCAG 2.2 AA) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

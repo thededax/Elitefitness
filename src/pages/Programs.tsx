@@ -6,6 +6,7 @@ import ImageWithSkeleton from '../components/ImageWithSkeleton';
 import Tilt from 'react-parallax-tilt';
 import ClassSchedule from '../components/ClassSchedule';
 import Pricing from '../components/Pricing';
+import { selectProgramAndScroll } from '../lib/funnelState';
 
 export default function Programs() {
   const heroRef = useRef<HTMLElement>(null);
@@ -166,6 +167,7 @@ export default function Programs() {
                 perspective={1000}
                 transitionSpeed={1000}
                 scale={1.02}
+                tiltEnable={typeof window !== 'undefined' ? window.innerWidth >= 1024 : false}
                 className="group relative transition-transform duration-500 h-full w-full"
               >
                 <div className="absolute -top-8 md:-top-10 left-0 text-6xl md:text-8xl font-headline text-white/5 group-hover:text-primary/10 transition-colors uppercase select-none">{program.num}</div>
@@ -183,8 +185,13 @@ export default function Programs() {
                       {program.desc}
                     </p>
                     <div className="flex items-center justify-between border-t border-white/5 pt-6 mt-auto">
-                      <span className="text-primary font-headline text-2xl tracking-wider">{program.price}</span>
-                      <Link to="/contact" className="bg-primary hover:bg-white hover:text-primary transition-all px-8 py-3 text-xs font-bold uppercase tracking-widest-plus text-white inline-block">Join</Link>
+                      <span className="text-[var(--accent-secondary,#FF2E44)] font-headline text-2xl tracking-wider">{program.price}</span>
+                      <button 
+                        onClick={() => selectProgramAndScroll(program.title)} 
+                        className="bg-[var(--accent-primary,#D70015)] hover:bg-white text-white hover:text-black transition-all px-8 py-3 text-xs font-bold uppercase tracking-widest-plus inline-block shadow-md"
+                      >
+                        Join
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -208,9 +215,12 @@ export default function Programs() {
               <p className="text-slate-500 text-sm leading-relaxed mb-10 max-w-xs">
                 Tailored performance programs designed for high-impact teams and executive health.
               </p>
-              <Link to="/contact" className="border border-white/20 hover:border-primary hover:bg-primary transition-all px-10 py-4 text-xs font-bold uppercase tracking-widest-plus text-white">
+              <button 
+                onClick={() => selectProgramAndScroll('Corporate Wellness Inquiries')} 
+                className="border border-[var(--accent-primary,#D70015)] hover:bg-[var(--accent-primary,#D70015)] hover:text-white transition-all px-10 py-4 text-xs font-bold uppercase tracking-widest-plus text-white"
+              >
                 Inquire Now
-              </Link>
+              </button>
             </div>
           </motion.div>
         </div>
@@ -241,7 +251,7 @@ export default function Programs() {
             Elite <span className="text-primary">Pricing</span>
           </motion.h2>
         </div>
-        <Pricing isAnnual={false} />
+        <Pricing />
       </section>
 
       <section className="relative py-8 sm:py-16 md:py-32 px-4 md:px-6 bg-primary overflow-hidden w-full">
@@ -261,12 +271,18 @@ export default function Programs() {
             Join 500+ members who have already transformed their lives at Elite Fitness. Your first session is on us.
           </p>
           <div className="flex flex-wrap justify-center gap-6">
-            <Link to="/contact" className="bg-white text-primary hover:bg-black hover:text-white transition-all px-14 py-6 text-sm font-bold uppercase tracking-widest-plus shadow-2xl">
+            <button 
+              onClick={() => selectProgramAndScroll('3-Day Free Trial Pass')} 
+              className="bg-[var(--accent-primary,#D70015)] text-white hover:bg-white hover:text-black transition-all px-14 py-6 text-sm font-bold uppercase tracking-widest-plus shadow-[0_0_30px_rgba(215,0,21,0.4)]"
+            >
               Get Started Free
-            </Link>
-            <Link to="/contact" className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary transition-all px-14 py-6 text-sm font-bold uppercase tracking-widest-plus">
+            </button>
+            <a 
+              href="#pricing" 
+              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-black transition-all px-14 py-6 text-sm font-bold uppercase tracking-widest-plus flex items-center justify-center"
+            >
               View Pricing
-            </Link>
+            </a>
           </div>
         </motion.div>
       </section>

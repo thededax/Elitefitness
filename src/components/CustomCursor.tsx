@@ -2,17 +2,35 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
 export default function CustomCursor() {
+  const [isFinePointer, setIsFinePointer] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [cursorVariant, setCursorVariant] = useState('default');
 
   useEffect(() => {
+    // Only enable custom cursor if device has a precise pointing device (mouse/trackpad)
+    const mediaQuery = window.matchMedia('(pointer: fine)');
+    setIsFinePointer(mediaQuery.matches);
+
+    const handleMediaChange = (e: MediaQueryListEvent) => {
+      setIsFinePointer(e.matches);
+    };
+
+    mediaQuery.addEventListener('change', handleMediaChange);
+
+    return () => {
+      mediaQuery.removeEventListener('change', handleMediaChange);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isFinePointer) return;
+
     const updateMousePosition = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
 
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      // Default reset
       let variant = 'default';
 
       if (
@@ -27,7 +45,6 @@ export default function CustomCursor() {
       }
 
       const closestImage = target.closest('img') || target.tagName.toLowerCase() === 'img';
-      // If we are looking at gallery specifically we'll add crosshair
       if (closestImage) {
         variant = 'crosshair';
       }
@@ -37,20 +54,17 @@ export default function CustomCursor() {
 
     window.addEventListener('mousemove', updateMousePosition);
     window.addEventListener('mouseover', handleMouseOver);
+    document.body.style.cursor = 'none';
 
     return () => {
       window.removeEventListener('mousemove', updateMousePosition);
       window.removeEventListener('mouseover', handleMouseOver);
-    };
-  }, []);
-
-  // Hide default cursor on desktop
-  useEffect(() => {
-    document.body.style.cursor = 'none';
-    return () => {
       document.body.style.cursor = 'auto';
     };
-  }, []);
+  }, [isFinePointer]);
+
+  // Do not render anything on touch/coarse devices
+  if (!isFinePointer) return null;
 
   return (
     <>

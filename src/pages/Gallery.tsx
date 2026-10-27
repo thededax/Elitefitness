@@ -173,9 +173,9 @@ export default function Gallery() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "0px 0px -100px 0px" }}
           transition={{ duration: 0.6 }}
-          className="mt-16 md:mt-24 text-center"
+          className="mt-16 md:mt-24 text-center px-4"
         >
-          <button className="group relative overflow-hidden bg-primary px-16 py-6 text-sm font-bold uppercase tracking-widest-plus transition-all hover:pr-20">
+          <button className="group relative overflow-hidden bg-primary px-8 sm:px-16 py-4 sm:py-6 text-sm font-bold uppercase tracking-widest-plus transition-all hover:pr-20 w-full sm:w-auto">
             <span className="relative z-10">Load More Moments</span>
             <span className="material-symbols-outlined absolute right-6 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all">expand_more</span>
           </button>

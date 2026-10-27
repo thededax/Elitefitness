@@ -115,7 +115,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="py-6 sm:py-10 md:py-24 lg:py-32 bg-[#050505] relative px-4 md:px-6 lg:px-24">
+      <section className="py-6 sm:py-10 md:py-24 lg:py-32 bg-[#050505] relative px-4 md:px-6 lg:px-24 overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}

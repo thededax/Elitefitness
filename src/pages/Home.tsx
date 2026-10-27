@@ -1,12 +1,15 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import { useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
-import MagneticButton from '../components/MagneticButton';
-import ImageWithSkeleton from '../components/ImageWithSkeleton';
+import BentoPrograms from '../components/BentoPrograms';
+import ClassSchedule from '../components/ClassSchedule';
+import BmiCalculator from '../components/BmiCalculator';
+import Pricing from '../components/Pricing';
+import TrainerRoster from '../components/TrainerRoster';
+import TrialBookingHub from '../components/TrialBookingHub';
+import BeforeAfterSlider from '../components/BeforeAfterSlider';
 import Marquee from '../components/Marquee';
-import Tilt from 'react-parallax-tilt';
-import BlogSection from '../components/BlogSection';
+import { selectProgramAndScroll } from '../lib/funnelState';
 
 export default function Home() {
   const heroRef = useRef<HTMLElement>(null);
@@ -14,391 +17,434 @@ export default function Home() {
     target: heroRef,
     offset: ["start start", "end start"]
   });
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
+  const yParallax = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
 
   return (
     <>
       <Helmet>
-        <title>Elite Zumba & Fitness Studio | Bhagalpur's Premier Gym</title>
-        <meta name="description" content="Join Bhagalpur's premier fitness sanctuary. Daily Zumba, Strength Training & Personal Training. 500+ active members, 4.9★ Google rating. Book your free trial today." />
+        <title>The Elite Fitness & Zumba Studio | Bhagalpur's Premier Gym</title>
+        <meta
+          name="description"
+          content="The Elite Fitness: Bhagalpur's premier strength, conditioning, and Zumba destination. 5,000 sq.ft facility, certified coaches, 4.9★ rating. Claim your Free 3-Day Trial Pass."
+        />
       </Helmet>
-      {/* HERO SECTION — Redesigned for premium impact */}
-      <section ref={heroRef} className="relative min-h-[82vh] md:min-h-screen flex items-center overflow-hidden bg-background-dark py-12 md:py-0">
-        {/* Background Image with Parallax — dark gym atmosphere */}
-        <motion.div style={{ y }} className="absolute inset-0 -top-[10%] -bottom-[10%]">
-          <img 
-            src="/images/hero-1.png"
-            alt="Elite Fitness Studio Interior" 
-            className="w-full h-full object-cover object-center scale-105 md:scale-100 transition-transform duration-700"
-          />
-          {/* Multi-layer overlay for depth, contrast, and mobile text readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-background-dark via-background-dark/70 sm:via-background-dark/80 to-background-dark/20"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-background-dark/50"></div>
-          <div className="absolute inset-0 bg-background-dark/30"></div>
-        </motion.div>
 
-        {/* Hero Content */}
-        <div className="relative z-20 px-6 lg:px-24 w-full pt-24 md:pt-0">
-          <div className="flex flex-col gap-0 max-w-5xl">
-            <motion.span 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-primary font-bold tracking-[0.5em] uppercase text-[10px] md:text-sm mb-6 md:mb-8 flex items-center gap-4"
-            >
-              <span className="w-8 md:w-12 h-[2px] bg-primary"></span>
-              Bhagalpur's Premier Fitness Sanctuary
-            </motion.span>
+      {/* =========================================================================
+          SECTION 1: 7/5 ASYMMETRICAL PERFORMANCE SPLIT HERO (VICTORY CRIMSON RED)
+          ========================================================================= */}
+      <section
+        ref={heroRef}
+        className="relative min-h-[92vh] lg:min-h-screen flex items-center pt-24 sm:pt-28 pb-16 lg:py-0 bg-[var(--bg-canvas,#080808)] overflow-hidden"
+      >
+        {/* Subtle Background Grid & Crimson Glow Overlay */}
+        <div className="absolute inset-0 bg-grid opacity-40 pointer-events-none" />
+        <div className="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-[var(--accent-primary,#D70015)]/12 blur-[130px] pointer-events-none" />
+        <div className="absolute top-1/2 -right-40 w-96 h-96 rounded-full bg-[var(--accent-primary,#D70015)]/8 blur-[150px] pointer-events-none" />
+
+        <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             
-            <h1>
-              <motion.span 
-                initial={{ opacity: 0, y: 30 }}
+            {/* Left 7 Columns: Core Value Proposition & Primary Conversion Cluster */}
+            <div className="lg:col-span-7 flex flex-col items-start">
+              
+              {/* Eyebrow Badge: Verified Hours & Status */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.6 }}
-                className="block text-[11vw] md:text-[10vw] lg:text-[9rem] font-headline leading-[0.85] tracking-tighter text-white"
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[var(--border-accent,rgba(215,0,21,0.45))] bg-[var(--bg-surface,#121212)]/90 backdrop-blur-md mb-6 shadow-md max-w-full"
               >
-                WHERE LIMITS
-              </motion.span>
-              <motion.span 
-                initial={{ opacity: 0, y: 30 }}
+                <span className="w-2 h-2 rounded-full bg-[var(--accent-primary,#D70015)] animate-pulse shrink-0" />
+                <span className="text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-wider text-[var(--accent-secondary,#FF2E44)] leading-tight">
+                  OPEN DAILY 6:00 AM – 10:00 PM • KOTWALI CHOWK, BHAGALPUR
+                </span>
+              </motion.div>
+
+              {/* Bold Condensed Display H1 Headline */}
+              <motion.h1
+                initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6, duration: 0.6 }}
-                className="block text-[11vw] md:text-[10vw] lg:text-[9rem] font-headline leading-[0.85] tracking-tighter text-white"
+                transition={{ duration: 0.55, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+                className="text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-display font-extrabold uppercase text-[var(--text-primary,#FFFFFF)] leading-[0.92] tracking-tight mb-6"
               >
-                GO TO <span className="text-primary italic">DIE.</span>
-              </motion.span>
-            </h1>
+                ENGINEER YOUR <br />
+                <span className="text-[var(--accent-primary,#D70015)] drop-shadow-[0_0_35px_rgba(215,0,21,0.4)]">STRONGEST SELF.</span>
+              </motion.h1>
 
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.9, duration: 0.5 }}
-              className="mt-6 md:mt-8 text-slate-400 text-sm md:text-lg lg:text-xl max-w-xl leading-relaxed font-light"
-            >
-              Zumba. Strength. Transformation. Join 500+ members who chose to stop making excuses and start making progress.
-            </motion.p>
-
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.1 }}
-              className="mt-8 md:mt-10 flex flex-col sm:flex-row items-start gap-4 md:gap-6"
-            >
-              <MagneticButton>
-                <Link to="/contact" className="group relative overflow-hidden bg-primary px-8 md:px-12 py-4 md:py-5 text-[10px] md:text-sm font-bold uppercase tracking-widest-plus transition-all hover:pr-12 md:hover:pr-16 inline-block text-white">
-                  <span className="relative z-10">Book Free Trial</span>
-                  <span className="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all text-sm md:text-base">arrow_forward</span>
-                </Link>
-              </MagneticButton>
-              <a 
-                href="https://wa.me/919065516492" 
-                className="group flex items-center gap-3 border border-white/20 px-6 md:px-8 py-4 md:py-5 text-[10px] md:text-sm font-bold uppercase tracking-widest-plus hover:border-primary hover:bg-primary/10 transition-all text-white"
+              {/* High-Clarity Anti-Fluff Subcopy */}
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                className="text-sm sm:text-lg text-[var(--text-secondary,#A0A0A0)] font-normal leading-relaxed max-w-[54ch] mb-8"
               >
-                <svg className="w-4 h-4 md:w-5 md:h-5 fill-current text-[#25D366] group-hover:text-primary transition-colors" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path></svg>
-                <span>WhatsApp Us</span>
-              </a>
-            </motion.div>
+                Bhagalpur's 5,000 sq.ft high-performance sanctuary. Olympic barbell platforms, high-energy Zumba, and certified coaching mentorship. No complex commitments — start with a zero-risk 3-day pass.
+              </motion.p>
+
+              {/* Dual Conversion CTA Cluster */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto mb-10"
+              >
+                <button
+                  onClick={() => selectProgramAndScroll('3-Day Free Trial Pass')}
+                  className="px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl text-xs sm:text-sm font-mono font-extrabold uppercase tracking-wider bg-[var(--accent-primary,#D70015)] text-white hover:bg-white hover:text-black transition-all shadow-[0_0_30px_rgba(215,0,21,0.45)] flex items-center justify-center gap-2 active:scale-95"
+                >
+                  <span>Claim Free 3-Day Trial Pass</span>
+                  <span className="material-symbols-outlined text-base">arrow_forward</span>
+                </button>
+
+                <a
+                  href="#schedule"
+                  className="px-6 sm:px-7 py-3.5 sm:py-4 rounded-xl text-xs sm:text-sm font-mono font-bold uppercase tracking-wider bg-[var(--bg-surface,#121212)] text-[var(--text-primary,#FFFFFF)] border border-white/15 hover:border-[var(--accent-primary,#D70015)] hover:text-[var(--accent-secondary,#FF2E44)] transition-all flex items-center justify-center gap-2"
+                >
+                  <span className="material-symbols-outlined text-base">calendar_month</span>
+                  <span>View Class Schedule</span>
+                </a>
+              </motion.div>
+
+              {/* 4-Metric Credibility & Proof Strip */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-6 pt-6 border-t border-[var(--border-subtle)] w-full"
+              >
+                <div>
+                  <div className="text-xl sm:text-2xl lg:text-3xl font-mono font-bold text-[var(--text-primary)]">
+                    500+
+                  </div>
+                  <div className="text-[9px] sm:text-[10px] font-mono uppercase tracking-widest text-[var(--text-muted)] mt-0.5">
+                    Active Members
+                  </div>
+                </div>
+
+                <div>
+                  <div className="text-xl sm:text-2xl lg:text-3xl font-mono font-bold text-[var(--accent-primary,#D70015)]">
+                    6+ Yrs
+                  </div>
+                  <div className="text-[9px] sm:text-[10px] font-mono uppercase tracking-widest text-[var(--text-muted)] mt-0.5">
+                    Est. 2018 Bhagalpur
+                  </div>
+                </div>
+
+                <div>
+                  <div className="text-xl sm:text-2xl lg:text-3xl font-mono font-bold text-[var(--text-primary)] flex items-center gap-1">
+                    4.9 <span className="material-symbols-outlined text-[var(--accent-primary,#D70015)] text-base sm:text-lg">star</span>
+                  </div>
+                  <div className="text-[9px] sm:text-[10px] font-mono uppercase tracking-widest text-[var(--text-muted)] mt-0.5">
+                    Google Reviews
+                  </div>
+                </div>
+
+                <div>
+                  <div className="text-xl sm:text-2xl lg:text-3xl font-mono font-bold text-[var(--text-primary)]">
+                    25+
+                  </div>
+                  <div className="text-[9px] sm:text-[10px] font-mono uppercase tracking-widest text-[var(--text-muted)] mt-0.5">
+                    Weekly Classes
+                  </div>
+                </div>
+              </motion.div>
+
+            </div>
+
+            {/* Right 5 Columns: Framed 4:5 Visual with Floating Quick Goal Matcher */}
+            <div className="lg:col-span-5 relative mt-6 lg:mt-0">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.96 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                className="relative rounded-2xl overflow-hidden border border-[var(--border-subtle)] bg-[var(--bg-surface,#121212)] aspect-[4/5] magazine-shadow"
+              >
+                {/* Hero Athlete Image with Unified Athletic Filter */}
+                <motion.div style={{ y: yParallax }} className="absolute inset-0 -top-[10%] -bottom-[10%]">
+                  <img
+                    src="/images/hero-1.png"
+                    alt="Elite Fitness Athlete & Facility"
+                    className="w-full h-full object-cover gym-photo-grade"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-canvas,#080808)] via-[var(--bg-canvas,#080808)]/30 to-transparent" />
+                </motion.div>
+
+                {/* Floating Glassmorphic Quick Goal Matcher Card */}
+                <div className="absolute bottom-3 left-3 right-3 sm:bottom-5 sm:left-5 sm:right-5 z-20 rounded-xl border border-[var(--border-accent,rgba(215,0,21,0.45))] bg-[var(--bg-surface,#121212)]/95 backdrop-blur-xl p-3.5 sm:p-5 shadow-2xl">
+                  <div className="flex items-center justify-between mb-2 sm:mb-3">
+                    <span className="text-[10px] font-mono uppercase font-bold text-[var(--accent-secondary,#FF2E44)] tracking-wider">
+                      🎯 Quick Goal Matcher
+                    </span>
+                    <span className="text-[9px] sm:text-[10px] font-mono text-[var(--text-muted)]">
+                      Instant Pathway
+                    </span>
+                  </div>
+                  
+                  <p className="text-[11px] sm:text-xs text-[var(--text-primary)] font-semibold mb-2 sm:mb-3">
+                    What is your primary fitness focus?
+                  </p>
+
+                  <div className="grid grid-cols-1 gap-1.5 sm:gap-2">
+                    <button
+                      onClick={() => selectProgramAndScroll('Strength & Hypertrophy')}
+                      className="px-3 py-1.5 sm:py-2 rounded-lg text-left text-[11px] sm:text-xs font-mono font-semibold bg-[var(--bg-surface-elevated,#181818)] hover:bg-[var(--accent-primary,#D70015)] hover:text-white border border-white/5 transition-all flex items-center justify-between group"
+                    >
+                      <span>🏋️ Strength & Hypertrophy</span>
+                      <span className="text-[9px] sm:text-[10px] uppercase font-bold text-[var(--text-muted)] group-hover:text-white">
+                        Explore →
+                      </span>
+                    </button>
+                    <button
+                      onClick={() => selectProgramAndScroll('Zumba Energy & Dance Fitness')}
+                      className="px-3 py-1.5 sm:py-2 rounded-lg text-left text-[11px] sm:text-xs font-mono font-semibold bg-[var(--bg-surface-elevated,#181818)] hover:bg-[var(--accent-primary,#D70015)] hover:text-white border border-white/5 transition-all flex items-center justify-between group"
+                    >
+                      <span>💃 Zumba Energy & Fat Loss</span>
+                      <span className="text-[9px] sm:text-[10px] uppercase font-bold text-[var(--text-muted)] group-hover:text-white">
+                        Explore →
+                      </span>
+                    </button>
+                    <button
+                      onClick={() => selectProgramAndScroll('1-on-1 Elite Coaching')}
+                      className="px-3 py-1.5 sm:py-2 rounded-lg text-left text-[11px] sm:text-xs font-mono font-semibold bg-[var(--bg-surface-elevated,#181818)] hover:bg-[var(--accent-primary,#D70015)] hover:text-white border border-white/5 transition-all flex items-center justify-between group"
+                    >
+                      <span>🎯 1-on-1 Private Mentorship</span>
+                      <span className="text-[9px] sm:text-[10px] uppercase font-bold text-[var(--text-muted)] group-hover:text-white">
+                        Explore →
+                      </span>
+                    </button>
+                  </div>
+                </div>
+
+              </motion.div>
+            </div>
+
           </div>
         </div>
-
-        {/* Trust Strip — overlapping hero bottom */}
-        <motion.div 
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.4, duration: 0.6 }}
-          className="absolute bottom-0 left-0 right-0 z-30"
-        >
-          <div className="max-w-7xl mx-auto px-6 lg:px-24">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-0 border-t border-white/10 bg-background-dark/80 backdrop-blur-sm">
-              <div className="p-2.5 md:p-6 border-r border-white/5 text-center md:text-left">
-                <div className="text-xl md:text-3xl font-headline text-white leading-none">500+</div>
-                <div className="text-[8px] md:text-[10px] uppercase tracking-widest font-bold text-slate-500 mt-1">Active Members</div>
-              </div>
-              <div className="p-2.5 md:p-6 border-r border-white/5 text-center md:text-left">
-                <div className="text-xl md:text-3xl font-headline text-primary leading-none">6+</div>
-                <div className="text-[8px] md:text-[10px] uppercase tracking-widest font-bold text-slate-500 mt-1">Years Strong</div>
-              </div>
-              <div className="p-2.5 md:p-6 border-r border-white/5 text-center md:text-left">
-                <div className="text-xl md:text-3xl font-headline text-white leading-none flex items-center justify-center md:justify-start gap-1">4.9 <span className="material-symbols-outlined text-primary text-base md:text-lg fill-1">star</span></div>
-                <div className="text-[8px] md:text-[10px] uppercase tracking-widest font-bold text-slate-500 mt-1">Google Rating</div>
-              </div>
-              <div className="p-2.5 md:p-6 text-center md:text-left">
-                <div className="text-xl md:text-3xl font-headline text-white leading-none">25+</div>
-                <div className="text-[8px] md:text-[10px] uppercase tracking-widest font-bold text-slate-500 mt-1">Daily Classes</div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Scroll Indicator */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2 }}
-          className="absolute bottom-24 md:bottom-28 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 pointer-events-none"
-        >
-          <span className="text-[9px] uppercase tracking-[0.3em] font-bold text-white/30">Scroll</span>
-          <motion.div 
-            animate={{ y: [0, 8, 0] }}
-            transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-            className="w-[1px] h-6 bg-gradient-to-b from-primary to-transparent"
-          />
-        </motion.div>
       </section>
 
-      {/* Smooth Gradient Divider: Hero -> Marquee */}
-      <div className="w-full h-12 -mt-6 bg-gradient-to-b from-background-dark via-background-dark/90 to-primary/80 relative z-30 pointer-events-none"></div>
-
-      {/* Marquee Strip with soft gradient overlay */}
-      <div className="w-full bg-gradient-to-r from-primary via-[#e62828] to-primary py-4 overflow-hidden relative z-20 shadow-[0_0_50px_rgba(255,46,46,0.3)]">
-        <Marquee 
-          items={["DEFY LIMITS", "ELEVATE PERFORMANCE", "PURE ENERGY", "THE ELITE STANDARD"]} 
-          className="text-white/40"
-          speed={30}
+      {/* =========================================================================
+          SECTION 2: KINETIC BULLS & UFC VICTORY CRIMSON MARQUEE STRIP
+          ========================================================================= */}
+      <div className="w-full bg-[var(--accent-primary,#D70015)] py-3 overflow-hidden shadow-[0_0_40px_rgba(215,0,21,0.35)] select-none">
+        <Marquee
+          items={[
+            "DEFY LIMITS",
+            "5,000 SQ.FT SANCTUARY",
+            "OLYMPIC BARBELL PLATFORMS",
+            "HIGH-ENERGY ZUMBA",
+            "CERTIFIED COACHING",
+            "BHAGALPUR'S HIGHEST RATED",
+            "PROGRESSIVE OVERLOAD"
+          ]}
+          className="text-white font-display font-extrabold text-lg sm:text-xl tracking-wider"
+          speed={35}
         />
       </div>
 
-      {/* Smooth Gradient Divider: Marquee -> About */}
-      <div className="w-full h-16 bg-gradient-to-b from-primary/80 via-background-dark/90 to-background-dark relative z-20 pointer-events-none"></div>
-
-      <section className="py-6 sm:py-10 md:py-24 lg:py-32 bg-background-dark relative overflow-hidden" id="about">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-12 items-center">
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "0px 0px -100px 0px" }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-6 relative w-full"
-          >
-            <div className="absolute -top-6 md:-top-12 -left-4 md:-left-12 text-[4rem] md:text-[10rem] font-headline text-white/[0.03] select-none">HERITAGE</div>
-            {/* PLACEHOLDER — replace with real photo: wide shot of Elite gym members during a workout session in Bhagalpur studio */}
-            <ImageWithSkeleton alt="Elite Community" className="relative z-10 w-full aspect-[16/9] md:aspect-square object-cover magazine-shadow" src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=2070&auto=format&fit=crop" />
-            <div className="absolute -bottom-3 md:-bottom-6 -right-3 md:-right-6 w-1/2 h-1/2 bg-primary/20 -z-10 border border-primary/40 translate-x-3 translate-y-3 md:translate-x-4 md:translate-y-4"></div>
-          </motion.div>
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "0px 0px -100px 0px" }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-6 lg:pl-12 mt-6 lg:mt-0"
-          >
-            <span className="text-primary font-bold tracking-[0.3em] uppercase text-[9px] md:text-xs mb-3 md:mb-4 block">Since 2018</span>
-            <h2 className="text-3xl md:text-6xl lg:text-8xl font-headline text-white leading-none mb-4 md:mb-8">BUILT BY<br/><span className="text-primary">PASSION</span></h2>
-            <p className="text-slate-400 text-xs md:text-lg leading-relaxed mb-6 md:mb-8">From a small studio to Bhagalpur's most advanced fitness destination, Elite has always been about more than just lifting weights. It's about a community that pushes each other to be better every single day.</p>
-            <Link to="/about" className="inline-flex items-center gap-3 md:gap-4 group">
-              <span className="bg-primary px-5 md:px-8 py-3 md:py-4 text-[9px] md:text-xs font-bold uppercase tracking-widest-plus text-white group-hover:bg-white group-hover:text-primary transition-all">Read Full Story</span>
-              <span className="material-symbols-outlined text-primary group-hover:translate-x-2 transition-transform text-sm md:text-base">east</span>
-            </Link>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Smooth Gradient Divider: About -> Disciplines */}
-      <div className="w-full h-16 bg-gradient-to-b from-background-dark via-background-dark/60 to-surface pointer-events-none -mb-1 relative z-10"></div>
-
-      <section className="py-6 sm:py-10 md:py-24 lg:py-32 bg-surface relative" id="programs">
-        <div className="absolute inset-0 bg-grid opacity-20"></div>
-        <div className="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
-          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-6 md:mb-20 gap-3 md:gap-8">
+      {/* =========================================================================
+          SECTION 3: BRAND HERITAGE & FACILITY HIGHLIGHTS
+          ========================================================================= */}
+      <section className="py-16 md:py-28 bg-[var(--bg-canvas,#080808)] relative overflow-hidden" id="about">
+        <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+            
+            {/* Visual Frame */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "0px 0px -100px 0px" }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-2xl md:text-5xl lg:text-7xl font-headline text-white uppercase">Elite<br/><span className="text-primary">Disciplines</span></h2>
-            </motion.div>
-            <Link to="/programs" className="text-[9px] md:text-xs font-bold uppercase tracking-widest-plus border-b-2 border-primary pb-1 md:pb-2 hover:text-primary transition-colors">View All Programs</Link>
-          </div>
-          <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 md:grid md:grid-cols-3 hide-scrollbar pb-4 -mx-4 px-4 md:mx-0 md:px-0">
-            {[
-              { title: 'ZUMBA', subtitle: 'Cardio Dance Party', img: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=2070&auto=format&fit=crop', mt: '' },
-              { title: 'STRENGTH', subtitle: 'Power & Hypertrophy', img: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=2070&auto=format&fit=crop', mt: 'md:mt-16' },
-              { title: 'PERSONAL', subtitle: '1-on-1 Transformation', img: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=2070&auto=format&fit=crop', mt: '' }
-            ].map((program, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "0px 0px -100px 0px" }}
-                transition={{ duration: 0.6, delay: i * 0.2 }}
-                className={`shrink-0 w-[80vw] sm:w-[60vw] md:w-auto snap-center ${program.mt}`}
-              >
-                <Tilt 
-                  tiltMaxAngleX={10} 
-                  tiltMaxAngleY={10} 
-                  perspective={1000} 
-                  transitionSpeed={1000} 
-                  scale={1.02}
-                  className="group relative overflow-hidden aspect-[3/4] h-full"
-                >
-                  <ImageWithSkeleton alt={program.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-all duration-700" src={program.img} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-                  <div className="absolute bottom-0 p-6 md:p-8 w-full transform translate-y-4 group-hover:translate-y-0 transition-transform">
-                    <h4 className="text-3xl md:text-4xl font-headline text-white mb-2" style={{ transform: "translateZ(50px)" }}>{program.title}</h4>
-                    <p className="text-slate-300 text-[10px] md:text-xs opacity-0 group-hover:opacity-100 transition-opacity uppercase tracking-widest">{program.subtitle}</p>
-                  </div>
-                </Tilt>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Smooth Gradient Divider: Disciplines -> Gallery */}
-      <div className="w-full h-16 bg-gradient-to-b from-surface via-surface/60 to-background-dark pointer-events-none -mb-1 relative z-10"></div>
-
-      <section className="py-6 sm:py-10 md:py-24 lg:py-32 bg-background-dark overflow-hidden" id="gallery">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="relative flex flex-col items-center">
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.96 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "0px 0px -100px 0px" }}
-              transition={{ duration: 0.6 }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 text-center w-full px-4"
+              viewport={{ once: true, margin: "0px 0px -80px 0px" }}
+              transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+              className="lg:col-span-6 relative"
             >
-              <h2 className="text-4xl md:text-7xl lg:text-[10rem] font-headline text-white tracking-tighter leading-none mb-4 md:mb-8 glow-red">THE STUDIO</h2>
-              <MagneticButton>
-                <Link to="/gallery" className="inline-block bg-primary text-white px-6 md:px-12 py-3 md:py-5 text-[9px] md:text-sm font-bold uppercase tracking-widest-plus hover:scale-105 transition-all magazine-shadow">Enter The Gallery</Link>
-              </MagneticButton>
-            </motion.div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 opacity-40 w-full max-w-6xl">
-              <ImageWithSkeleton alt="Gallery 1" className="w-full aspect-square object-cover" src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop" />
-              <ImageWithSkeleton alt="Gallery 2" className="w-full aspect-[3/4] object-cover mt-4 md:mt-12" src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=2070&auto=format&fit=crop" />
-              <ImageWithSkeleton alt="Gallery 3" className="w-full aspect-square object-cover" src="https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=2070&auto=format&fit=crop" />
-              <ImageWithSkeleton alt="Gallery 4" className="w-full aspect-[3/4] object-cover mt-4 md:mt-12" src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=2070&auto=format&fit=crop" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Smooth Gradient Divider: Gallery -> Reviews */}
-      <div className="w-full h-16 bg-gradient-to-b from-background-dark via-background-dark/60 to-surface pointer-events-none -mb-1 relative z-10"></div>
-
-      <section className="py-6 sm:py-10 md:py-24 lg:py-32 bg-surface relative" id="reviews">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-16 items-center">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "0px 0px -100px 0px" }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-4"
-          >
-            <div className="flex items-center gap-1 md:gap-2 mb-3 md:mb-4">
-              {[1,2,3,4,5].map(i => <span key={i} className="material-symbols-outlined text-primary fill-1 text-xl md:text-3xl">star</span>)}
-            </div>
-            <h2 className="text-3xl md:text-6xl font-headline text-white mb-3 md:mb-6 leading-none">ELITE<br/><span className="text-primary">RESULTS</span></h2>
-            <p className="text-slate-400 mb-5 md:mb-8 text-[10px] md:text-base">Bhagalpur's highest-rated fitness community with a 4.9/5 star average across 500+ reviews.</p>
-            <Link to="/reviews" className="inline-block bg-transparent border border-white/20 px-5 md:px-8 py-2 md:py-4 text-[9px] md:text-xs font-bold uppercase tracking-widest-plus hover:bg-primary hover:border-primary transition-all">See All Reviews</Link>
-          </motion.div>
-          <div className="lg:col-span-8 flex overflow-x-auto snap-x snap-mandatory gap-4 md:grid md:grid-cols-2 hide-scrollbar pb-4 -mx-4 px-4 md:mx-0 md:px-0">
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "0px 0px -100px 0px" }}
-              transition={{ duration: 0.6 }}
-              className="glass-card p-4 md:p-10 relative mt-0 md:mt-8 shrink-0 w-[85vw] sm:w-[70vw] md:w-auto snap-center"
-            >
-              <span className="material-symbols-outlined absolute -top-3 -left-3 md:-top-4 md:-left-4 text-3xl md:text-5xl text-primary opacity-50">format_quote</span>
-              <p className="text-slate-300 italic mb-4 md:mb-6 leading-relaxed text-xs md:text-base">"The environment here is electric. Best equipment in Bihar and the trainers actually care about your progress."</p>
-              <div className="flex items-center gap-3 md:gap-4">
-                <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-slate-700"></div>
-                <div>
-                  <h5 className="text-white font-bold text-[10px] md:text-sm uppercase">Rahul Sharma</h5>
-                  <p className="text-primary text-[8px] md:text-[10px] uppercase font-bold tracking-widest">Member for 2 Years</p>
+              <div className="rounded-2xl overflow-hidden border border-[var(--border-subtle)] bg-[var(--bg-surface,#121212)] aspect-video sm:aspect-square relative magazine-shadow">
+                <img
+                  src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop"
+                  alt="Elite Fitness Facility Interior"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover gym-photo-grade"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-canvas,#080808)] via-transparent to-transparent" />
+                <div className="absolute bottom-5 left-5 right-5 p-4 rounded-xl bg-black/80 backdrop-blur-md border border-white/10 flex items-center justify-between">
+                  <div>
+                    <p className="text-xs font-mono uppercase text-[var(--accent-secondary,#FF2E44)] font-bold">5,000 Sq.Ft Floor</p>
+                    <p className="text-xs text-[var(--text-secondary)]">Savitri Tower, Kotwali Chowk</p>
+                  </div>
+                  <span className="text-[10px] font-mono px-2 py-1 rounded bg-[var(--accent-primary,#D70015)] text-white font-bold uppercase">
+                    Pristine Hygiene
+                  </span>
                 </div>
               </div>
             </motion.div>
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
+
+            {/* Content Narrative */}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "0px 0px -100px 0px" }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="glass-card p-4 md:p-10 relative shrink-0 w-[85vw] sm:w-[70vw] md:w-auto snap-center"
+              viewport={{ once: true, margin: "0px 0px -80px 0px" }}
+              transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+              className="lg:col-span-6"
             >
-              <span className="material-symbols-outlined absolute -top-3 -left-3 md:-top-4 md:-left-4 text-3xl md:text-5xl text-primary opacity-50">format_quote</span>
-              <p className="text-slate-300 italic mb-4 md:mb-6 leading-relaxed text-xs md:text-base">"Zumba sessions are the highlight of my day. Incredible energy and a very supportive female-friendly atmosphere."</p>
-              <div className="flex items-center gap-3 md:gap-4">
-                <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-slate-700"></div>
-                <div>
-                  <h5 className="text-white font-bold text-[10px] md:text-sm uppercase">Priya Singh</h5>
-                  <p className="text-primary text-[8px] md:text-[10px] uppercase font-bold tracking-widest">Zumba Regular</p>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--accent-secondary,#FF2E44)] text-xs font-mono font-semibold uppercase tracking-wider mb-4">
+                <span>ESTABLISHED 2018</span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl lg:text-6xl font-display font-extrabold uppercase text-[var(--text-primary)] leading-[0.95] tracking-tight mb-6">
+                BUILT ON PASSION. <br />
+                <span className="text-[var(--accent-primary,#D70015)]">BACKED BY SCIENCE.</span>
+              </h2>
+              <p className="text-sm sm:text-base text-[var(--text-secondary,#A0A0A0)] leading-relaxed mb-6">
+                Elite began in 2018 with a single objective: replace chaotic, unguided commercial gym culture in Bhagalpur with genuine athletic standards, clean biomechanics, and positive group community energy.
+              </p>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                <div className="p-4 rounded-xl border border-white/5 bg-[var(--bg-surface,#121212)]">
+                  <span className="material-symbols-outlined text-[var(--accent-primary,#D70015)] text-2xl mb-1">fitness_center</span>
+                  <h4 className="text-base font-display font-bold uppercase text-[var(--text-primary)]">Heavy Free-Weight Zone</h4>
+                  <p className="text-xs text-[var(--text-secondary)] mt-1">Dumbbells up to 50kg, calibrated Olympic bars & power racks.</p>
+                </div>
+                <div className="p-4 rounded-xl border border-white/5 bg-[var(--bg-surface,#121212)]">
+                  <span className="material-symbols-outlined text-[var(--accent-primary,#D70015)] text-2xl mb-1">music_note</span>
+                  <h4 className="text-base font-display font-bold uppercase text-[var(--text-primary)]">Acoustic Zumba Arena</h4>
+                  <p className="text-xs text-[var(--text-secondary)] mt-1">Immersive sound systems and certified Zumba instructors.</p>
                 </div>
               </div>
+
+              <button
+                onClick={() => selectProgramAndScroll('3-Day Free Trial Pass')}
+                className="px-6 py-3.5 rounded-xl text-xs font-mono font-bold uppercase tracking-wider bg-[var(--accent-primary,#D70015)] text-white hover:bg-white hover:text-black transition-all shadow-md inline-flex items-center gap-2"
+              >
+                <span>Tour the Sanctuary in Person →</span>
+              </button>
             </motion.div>
+
           </div>
         </div>
       </section>
 
-      {/* Smooth Gradient Divider: Reviews -> Blog */}
-      <div className="w-full h-16 bg-gradient-to-b from-surface via-surface/60 to-[#0a0a0a] pointer-events-none -mb-1 relative z-10"></div>
+      {/* =========================================================================
+          SECTION 4: 12-COLUMN ASYMMETRICAL BENTO PROGRAMS GRID
+          ========================================================================= */}
+      <BentoPrograms />
 
-      <section className="py-6 sm:py-10 md:py-24 lg:py-32 bg-[#0a0a0a] relative" id="blog">
-        <BlogSection />
-      </section>
-
-      {/* Smooth Gradient Divider: Blog -> Contact */}
-      <div className="w-full h-16 bg-gradient-to-b from-[#0a0a0a] via-[#0a0a0a]/60 to-background-dark pointer-events-none -mb-1 relative z-10"></div>
-
-      <section className="py-6 sm:py-10 md:py-24 lg:py-32 bg-background-dark relative" id="contact">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-1 lg:grid-cols-12 gap-0 overflow-hidden magazine-shadow">
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "0px 0px -100px 0px" }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-7 bg-primary p-6 md:p-12 lg:p-24 flex flex-col justify-center relative"
-          >
-            <div className="absolute top-0 right-0 p-4 md:p-8 opacity-10">
-              <span className="material-symbols-outlined text-[4rem] md:text-[10rem]">map</span>
-            </div>
-            <h2 className="text-2xl md:text-5xl lg:text-7xl font-headline text-white mb-4 md:mb-8 leading-none">VISIT THE<br/>SANCTUARY</h2>
-            <p className="text-white/80 text-xs md:text-lg mb-6 md:mb-12 max-w-md">Located in the heart of Bhagalpur, our 5,000 sq.ft facility is ready to welcome you. Start your journey today.</p>
-            <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
-              <Link to="/contact" className="bg-white text-primary px-6 md:px-12 py-3 md:py-5 text-[9px] md:text-sm font-bold uppercase tracking-widest-plus hover:bg-black hover:text-white transition-all text-center">Contact Now</Link>
-              <Link to="/contact" className="bg-transparent border-2 border-white text-white px-6 md:px-12 py-3 md:py-5 text-[9px] md:text-sm font-bold uppercase tracking-widest-plus hover:bg-white hover:text-primary transition-all text-center">Visit Us</Link>
-            </div>
-          </motion.div>
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "0px 0px -100px 0px" }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-5 bg-surface relative min-h-[200px] md:min-h-[400px]"
-          >
-            <div className="absolute inset-0 opacity-70">
-              <iframe allowFullScreen height="100%" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3606.5866750345674!2d86.9719369150119!3d25.24151798387431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f04bc225c5d33f%3A0xc66513233346d03d!2sElite%20Fitness!5e0!3m2!1sen!2sin!4v1655000000000!5m2!1sen!2sin" style={{border:0}} width="100%"></iframe>
-            </div>
-            <div className="absolute bottom-3 md:bottom-8 left-3 md:left-8 p-3 md:p-6 glass-card border-primary/50">
-              <h4 className="text-white font-headline text-lg md:text-2xl mb-1 md:mb-2">SAVITRI TOWER</h4>
-              <p className="text-slate-400 text-[9px] md:text-xs uppercase tracking-widest">5th Floor, Kotwali Chowk<br/>Bhagalpur, Bihar</p>
-            </div>
-          </motion.div>
+      {/* =========================================================================
+          SECTION 5: INTERACTIVE FILTERABLE CLASS TIMETABLE
+          ========================================================================= */}
+      <section className="py-16 md:py-28 bg-[var(--bg-canvas,#080808)]" id="schedule">
+        <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
+          <ClassSchedule />
         </div>
       </section>
 
-      {/* Smooth Gradient Divider: Contact -> Final CTA */}
-      <div className="w-full h-16 bg-gradient-to-b from-background-dark via-background-dark/80 to-primary pointer-events-none -mb-1 relative z-10"></div>
+      {/* =========================================================================
+          SECTION 6: INTERACTIVE BMI & FITNESS ASSESSMENT TOOL
+          ========================================================================= */}
+      <BmiCalculator />
 
-      <section className="relative py-6 sm:py-10 md:py-24 px-4 md:px-6 bg-primary overflow-hidden">
-        <div className="absolute inset-0 bg-black/10 mix-blend-multiply"></div>
-        <div className="max-w-7xl mx-auto relative z-10 text-center">
-          <h2 className="text-3xl md:text-6xl lg:text-[10rem] font-headline text-white tracking-tighter leading-none mb-4 select-none opacity-20 absolute -top-2 md:-top-12 left-0 right-0">NO EXCUSES</h2>
-          <div className="flex flex-col items-center gap-3 md:gap-8 pt-4 md:pt-12">
-            <h3 className="text-2xl md:text-4xl lg:text-6xl font-headline text-white uppercase tracking-wide">Ready to claim your spot?</h3>
-            <p className="text-white/80 font-medium max-w-xl text-sm md:text-lg">Join 500+ members who have already transformed their lives at Elite Fitness. Your first session is on us.</p>
-            <div className="flex flex-col sm:flex-row justify-center gap-3 md:gap-6 mt-2 md:mt-4 w-full sm:w-auto">
-              <Link to="/contact" className="bg-white text-primary hover:bg-black hover:text-white transition-all px-6 md:px-12 py-3 md:py-5 text-[9px] md:text-sm font-bold uppercase tracking-widest-plus text-center">
-                Join Gym Today
-              </Link>
-              <Link to="/contact" className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary transition-all px-6 md:px-12 py-3 md:py-5 text-[9px] md:text-sm font-bold uppercase tracking-widest-plus text-center">
-                Book Free Trial
-              </Link>
+      {/* =========================================================================
+          SECTION 7: CERTIFIED TRAINER ROSTER
+          ========================================================================= */}
+      <TrainerRoster />
+
+      {/* =========================================================================
+          SECTION 8: MEMBERSHIP TIERS WITH CADENCE TOGGLE
+          ========================================================================= */}
+      <Pricing />
+
+      {/* =========================================================================
+          SECTION 9: MEMBER PROOF & BEFORE/AFTER WALL OF FAME
+          ========================================================================= */}
+      <section className="py-16 md:py-28 bg-[var(--bg-canvas,#080808)] border-t border-[var(--border-subtle)]" id="wall-of-fame">
+        <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-6">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--accent-secondary,#FF2E44)] text-xs font-mono font-semibold uppercase tracking-wider mb-3">
+                <span>05 / VERIFIED PROOF</span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl lg:text-6xl font-display font-extrabold uppercase text-[var(--text-primary)] leading-none">
+                WALL OF <span className="text-[var(--accent-primary,#D70015)]">TRANSFORMATION</span>
+              </h2>
+            </div>
+            <p className="max-w-md text-xs sm:text-sm text-[var(--text-secondary)]">
+              Real members. Verified physical transformations. Over 500+ active members in Bhagalpur with an average 4.9★ rating.
+            </p>
+          </div>
+
+          {/* Interactive Before & After Slider */}
+          <div className="mb-14 rounded-2xl overflow-hidden border border-[var(--border-subtle)] magazine-shadow">
+            <BeforeAfterSlider
+              beforeImage="https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=2069&auto=format&fit=crop"
+              afterImage="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?q=80&w=2070&auto=format&fit=crop"
+              title="Elite Member Progress: Fat Loss & Core Density"
+              beforeLabel="Day 1 Baseline"
+              afterLabel="Month 6 Consistent Training"
+            />
+          </div>
+
+          {/* Member Testimonial Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="p-6 sm:p-8 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface,#121212)]">
+              <div className="flex items-center gap-1 text-[var(--accent-primary,#D70015)] mb-4">
+                {[1,2,3,4,5].map(i => <span key={i} className="material-symbols-outlined text-sm">star</span>)}
+              </div>
+              <p className="text-xs sm:text-sm text-[var(--text-secondary)] italic leading-relaxed mb-6 font-normal">
+                "The atmosphere here is electric. Best barbell floor in Bihar and Vikram sir actually corrects your deadlift mechanics rather than ignoring you."
+              </p>
+              <div className="flex items-center gap-3 border-t border-white/5 pt-4">
+                <div className="w-9 h-9 rounded-full bg-[var(--accent-primary,#D70015)] text-white font-bold flex items-center justify-center font-mono text-xs">
+                  RS
+                </div>
+                <div>
+                  <h5 className="text-sm font-display font-bold uppercase text-[var(--text-primary)]">Rahul Sharma</h5>
+                  <p className="text-[10px] font-mono text-[var(--text-muted)] uppercase">Member for 2 Years • Barbell Club</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-6 sm:p-8 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface,#121212)]">
+              <div className="flex items-center gap-1 text-[var(--accent-primary,#D70015)] mb-4">
+                {[1,2,3,4,5].map(i => <span key={i} className="material-symbols-outlined text-sm">star</span>)}
+              </div>
+              <p className="text-xs sm:text-sm text-[var(--text-secondary)] italic leading-relaxed mb-6 font-normal">
+                "Neha ma'am's Zumba sessions are the best part of my week. High-energy, completely safe female-friendly environment, and I burned 12kg in 5 months."
+              </p>
+              <div className="flex items-center gap-3 border-t border-white/5 pt-4">
+                <div className="w-9 h-9 rounded-full bg-[var(--accent-primary,#D70015)] text-white font-bold flex items-center justify-center font-mono text-xs">
+                  PS
+                </div>
+                <div>
+                  <h5 className="text-sm font-display font-bold uppercase text-[var(--text-primary)]">Priya Singh</h5>
+                  <p className="text-[10px] font-mono text-[var(--text-muted)] uppercase">Zumba Regular • Kotwali Chowk</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-6 sm:p-8 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface,#121212)]">
+              <div className="flex items-center gap-1 text-[var(--accent-primary,#D70015)] mb-4">
+                {[1,2,3,4,5].map(i => <span key={i} className="material-symbols-outlined text-sm">star</span>)}
+              </div>
+              <p className="text-xs sm:text-sm text-[var(--text-secondary)] italic leading-relaxed mb-6 font-normal">
+                "No complicated gym contracts. Very transparent pricing, immaculate washrooms and locker facility, open by 6 AM every morning."
+              </p>
+              <div className="flex items-center gap-3 border-t border-white/5 pt-4">
+                <div className="w-9 h-9 rounded-full bg-[var(--accent-primary,#D70015)] text-white font-bold flex items-center justify-center font-mono text-xs">
+                  AK
+                </div>
+                <div>
+                  <h5 className="text-sm font-display font-bold uppercase text-[var(--text-primary)]">Amit Kumar</h5>
+                  <p className="text-[10px] font-mono text-[var(--text-muted)] uppercase">Quarterly Member • Strength Track</p>
+                </div>
+              </div>
             </div>
           </div>
+
         </div>
       </section>
+
+      {/* =========================================================================
+          SECTION 10: TRIAL PASS BOOKING & LOCATION HUB (#trial-booking)
+          ========================================================================= */}
+      <TrialBookingHub />
     </>
   );
 }

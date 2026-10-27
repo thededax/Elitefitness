@@ -10,90 +10,94 @@ export default function Footer() {
     offset: ["start end", "end end"]
   });
 
-  // Smooth GPU-accelerated vertical parallax translateY
   const y = useTransform(scrollYProgress, [0, 1], [-15, 10]);
 
   return (
-    <footer ref={footerRef} className="relative bg-[#080808] border-t border-white/10 pt-16 md:pt-24 pb-12 px-6 lg:px-12 overflow-hidden select-none">
-      <div className="max-w-7xl mx-auto flex flex-col gap-12 md:gap-16">
+    <footer ref={footerRef} className="relative bg-[var(--bg-canvas,#080808)] border-t border-[var(--border-subtle)] pt-16 md:pt-24 pb-28 md:pb-12 px-4 sm:px-6 lg:px-12 overflow-hidden select-none">
+      <div className="max-w-[1320px] mx-auto flex flex-col gap-12 md:gap-16">
         
         {/* Top Section: Tagline + Navigation Columns */}
-        <div className="flex flex-col lg:flex-row justify-between items-start gap-12 lg:gap-16">
+        <div className="flex flex-col lg:flex-row justify-between items-start gap-10 lg:gap-16">
           <div className="max-w-md">
-            <h3 className="text-2xl md:text-4xl font-headline text-white tracking-wide uppercase mb-4">
-              TRANSFORM YOUR BODY.<br />
-              <span className="text-primary italic">DEFY LIMITS.</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-[var(--bg-surface,#121212)] text-[var(--accent-secondary,#FF2E44)] text-[11px] font-mono font-semibold uppercase tracking-wider mb-4">
+              <span>Bhagalpur's Premier Fitness Sanctuary</span>
+            </div>
+            <h3 className="text-3xl md:text-5xl font-display font-extrabold text-white tracking-tight uppercase leading-none mb-4">
+              ENGINEER YOUR <br />
+              <span className="text-[var(--accent-primary,#D70015)]">STRONGEST SELF.</span>
             </h3>
-            <p className="text-slate-400 text-xs md:text-sm leading-relaxed font-light">
-              Transforming lives through elite movement, strength training, and high-performance living. Bhagalpur's premier fitness destination.
+            <p className="text-[var(--text-secondary,#A0A0A0)] text-xs sm:text-sm leading-relaxed font-normal">
+              5,000 sq.ft state-of-the-art facility featuring Olympic platforms, calibrated plates, high-energy Zumba, and certified coaching mentorship.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-10 md:gap-16 lg:gap-20 w-full lg:w-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 sm:gap-12 w-full lg:w-auto">
             <div>
-              <h4 className="text-white font-bold text-xs uppercase tracking-widest mb-5">Explore</h4>
-              <ul className="flex flex-col gap-3 text-xs font-semibold text-slate-400 uppercase tracking-widest">
-                <li><Link to="/programs" className="hover:text-primary transition-colors">Programs</Link></li>
-                <li><Link to="/about" className="hover:text-primary transition-colors">Our Story</Link></li>
-                <li><Link to="/gallery" className="hover:text-primary transition-colors">Gallery</Link></li>
+              <h4 className="text-white font-mono font-bold text-xs uppercase tracking-widest mb-4 text-[var(--accent-secondary,#FF2E44)]">
+                EXPLORE
+              </h4>
+              <ul className="flex flex-col gap-2.5 text-xs font-mono text-[var(--text-secondary,#A0A0A0)] uppercase tracking-wider">
+                <li><a href="/#programs-bento" className="hover:text-white transition-colors">Programs</a></li>
+                <li><a href="/#schedule" className="hover:text-white transition-colors">Timetable</a></li>
+                <li><a href="/#trainers" className="hover:text-white transition-colors">Coaches</a></li>
+                <li><a href="/#bmi-calculator" className="hover:text-white transition-colors">BMI Diagnostic</a></li>
+                <li><a href="/#pricing" className="hover:text-white transition-colors">Memberships</a></li>
               </ul>
             </div>
 
             <div>
-              <h4 className="text-white font-bold text-xs uppercase tracking-widest mb-5">Support</h4>
-              <ul className="flex flex-col gap-3 text-xs font-semibold text-slate-400 uppercase tracking-widest">
-                <li><a href="https://wa.me/919065516492" className="hover:text-primary transition-colors">WhatsApp</a></li>
-                <li><Link to="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
-                <li><Link to="/contact" className="hover:text-primary transition-colors">Location</Link></li>
+              <h4 className="text-white font-mono font-bold text-xs uppercase tracking-widest mb-4 text-[var(--accent-secondary,#FF2E44)]">
+                SANCTUARY
+              </h4>
+              <ul className="flex flex-col gap-2.5 text-xs font-mono text-[var(--text-secondary,#A0A0A0)] uppercase tracking-wider">
+                <li><a href="/#trial-booking" className="hover:text-white transition-colors">Free Trial Pass</a></li>
+                <li><Link to="/about" className="hover:text-white transition-colors">Our Story</Link></li>
+                <li><Link to="/reviews" className="hover:text-white transition-colors">Wall of Fame</Link></li>
+                <li><a href="https://wa.me/919065516492" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">WhatsApp Desk</a></li>
+                <li><a href="tel:+919065516492" className="hover:text-white transition-colors">Call Direct</a></li>
               </ul>
             </div>
 
             <div className="col-span-2 sm:col-span-1">
-              <h4 className="text-white font-bold text-xs uppercase tracking-widest mb-5">Newsletter</h4>
-              <p className="text-xs text-slate-500 uppercase tracking-widest mb-4">Stay ahead of the game.</p>
-              <div className="relative">
-                <input 
-                  className="bg-surface border border-white/10 w-full px-4 py-3 text-xs font-bold uppercase tracking-widest text-white focus:border-primary focus:ring-0 outline-none" 
-                  placeholder="EMAIL ADDRESS" 
-                  type="email" 
-                />
-                <button className="absolute right-2 top-1/2 -translate-y-1/2 bg-primary text-white p-1.5 hover:bg-white hover:text-primary transition-colors">
-                  <span className="material-symbols-outlined text-sm">arrow_forward</span>
-                </button>
+              <h4 className="text-white font-mono font-bold text-xs uppercase tracking-widest mb-4 text-[var(--accent-secondary,#FF2E44)]">
+                HOURS & LOCATION
+              </h4>
+              <div className="text-xs font-mono text-[var(--text-secondary,#A0A0A0)] space-y-1.5 leading-relaxed">
+                <p className="text-white font-semibold">Savitri Tower, 5th Floor</p>
+                <p>Above Vishal Mega Mart, Kotwali Chowk, Bhagalpur</p>
+                <p className="text-[var(--accent-secondary,#FF2E44)] font-bold pt-1">Mon – Sat: 6:00 AM – 10:00 PM</p>
+                <p>Sunday: 8:00 AM – 12:00 PM</p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Middle Section: Massive High-Contrast Display Wordmark inspired by Antigravity */}
-        <motion.div style={{ y }} className="w-full flex justify-center py-4 md:py-8 my-2 border-y border-white/5">
-          <h1 className="text-[17vw] sm:text-[18vw] md:text-[18vw] lg:text-[19vw] xl:text-[260px] font-headline tracking-tighter uppercase leading-[0.75] text-white/95 hover:text-white transition-colors text-center select-none w-full flex items-center justify-center gap-1 md:gap-3">
+        {/* Middle Section: High-Contrast Display Wordmark */}
+        <motion.div style={{ y }} className="w-full flex justify-center py-6 my-2 border-y border-white/5">
+          <h2 className="text-[17vw] sm:text-[18vw] md:text-[18vw] lg:text-[19vw] xl:text-[230px] font-display font-extrabold tracking-tighter uppercase leading-[0.75] text-white/95 hover:text-white transition-colors text-center select-none w-full flex items-center justify-center gap-1 md:gap-3">
             <span>ELI</span>
-            <span style={{ WebkitTextStroke: '2px rgba(255, 255, 255, 0.9)', color: 'transparent' }}>TE</span>
-            <span className="w-3 h-3 md:w-6 md:h-6 rounded-full bg-primary inline-block self-baseline mt-4 md:mt-8 ml-1 glow-red"></span>
-          </h1>
+            <span style={{ WebkitTextStroke: '2px rgba(215, 0, 21, 0.75)', color: 'transparent' }}>TE</span>
+            <span className="w-3 h-3 md:w-6 md:h-6 rounded-full bg-[var(--accent-primary,#D70015)] inline-block self-baseline mt-4 md:mt-8 ml-1 shadow-[0_0_25px_rgba(215,0,21,0.9)]"></span>
+          </h2>
         </motion.div>
 
         {/* Bottom Bar: Brand Logo & Legal Copyright */}
-        <div className="pt-4 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="pt-2 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-mono text-[var(--text-muted)]">
           <div className="flex items-center gap-4">
             <Link to="/" className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-primary text-2xl">fitness_center</span>
-              <span className="text-white text-lg font-headline tracking-widest uppercase">ELITE</span>
+              <span className="material-symbols-outlined text-[var(--accent-primary,#D70015)] text-xl">fitness_center</span>
+              <span className="text-white text-base font-display font-bold tracking-widest uppercase">ELITE FITNESS</span>
             </Link>
-            <span className="text-slate-700">|</span>
-            <p className="text-[10px] text-slate-500 uppercase tracking-[0.2em]">
-              © {new Date().getFullYear()} ELITE FITNESS STUDIO. ALL RIGHTS RESERVED.
+            <span className="text-white/20">|</span>
+            <p className="text-[10px] uppercase tracking-wider">
+              © {new Date().getFullYear()} Elite Zumba & Fitness Studio. All Rights Reserved.
             </p>
           </div>
 
-          <div className="flex gap-6">
-            <a href="#" className="text-slate-500 hover:text-primary transition-colors">
-              <span className="material-symbols-outlined text-xl">facebook</span>
-            </a>
-            <a href="#" className="text-slate-500 hover:text-primary transition-colors">
-              <span className="material-symbols-outlined text-xl">camera</span>
-            </a>
+          <div className="flex gap-6 text-[11px] font-mono">
+            <a href="https://wa.me/919065516492" className="hover:text-[var(--accent-secondary,#FF2E44)] transition-colors">WhatsApp</a>
+            <a href="tel:+919065516492" className="hover:text-[var(--accent-secondary,#FF2E44)] transition-colors">+91 90655 16492</a>
+            <span className="text-[var(--text-muted)]">Bhagalpur, Bihar</span>
           </div>
         </div>
 
