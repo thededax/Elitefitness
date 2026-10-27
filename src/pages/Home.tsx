@@ -307,11 +307,11 @@ export default function Home() {
           {/* Interactive Before & After Slider */}
           <div className="mb-14 rounded-2xl overflow-hidden border border-[var(--border-subtle)] magazine-shadow">
             <BeforeAfterSlider
-              beforeImage="https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=2069&auto=format&fit=crop"
-              afterImage="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?q=80&w=2070&auto=format&fit=crop"
-              title="Elite Member Progress: Fat Loss & Core Density"
-              beforeLabel="Day 1 Baseline"
-              afterLabel="Month 6 Consistent Training"
+              beforeImage="/images/transformations/transformation-day-1.jpg"
+              afterImage="/images/transformations/transformation-month-6.jpg"
+              title="Elite Member Progress: Real Transformation"
+              beforeLabel="Day 1"
+              afterLabel="After 6 Months"
             />
           </div>
 

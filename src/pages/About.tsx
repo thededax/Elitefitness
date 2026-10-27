@@ -167,11 +167,11 @@ export default function About() {
 
       <section className="py-6 sm:py-10 md:py-24 relative bg-surface overflow-hidden">
         <BeforeAfterSlider 
-          beforeImage="https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=2069&auto=format&fit=crop"
-          afterImage="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?q=80&w=2070&auto=format&fit=crop"
+          beforeImage="/images/transformations/transformation-day-1.jpg"
+          afterImage="/images/transformations/transformation-month-6.jpg"
           title="Elite Transformations"
           beforeLabel="Day 1"
-          afterLabel="Month 6"
+          afterLabel="After 6 Months"
         />
       </section>
 

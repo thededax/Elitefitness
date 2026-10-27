@@ -62,7 +62,7 @@ export default function BeforeAfterSlider({
       
       <div 
         ref={containerRef}
-        className="relative w-full aspect-square md:aspect-video overflow-hidden magazine-shadow cursor-ew-resize select-none touch-none"
+        className="relative w-full max-w-2xl aspect-[1024/985] rounded-2xl overflow-hidden border border-white/10 magazine-shadow cursor-ew-resize select-none touch-none mx-auto bg-black"
         onMouseMove={handleMouseMove}
         onTouchMove={handleTouchMove}
         onMouseDown={() => setIsDragging(true)}
@@ -70,8 +70,8 @@ export default function BeforeAfterSlider({
       >
         {/* After Image (Background) */}
         <div className="absolute inset-0">
-          <img src={afterImage} alt={afterLabel} className="w-full h-full object-cover" draggable={false} />
-          <div className="absolute top-3 md:top-6 right-3 md:right-6 bg-black/75 backdrop-blur-md text-white px-3 md:px-4 py-1.5 md:py-2 text-[9px] md:text-[10px] font-bold uppercase tracking-widest-plus border border-white/10 z-10 rounded">
+          <img src={afterImage} alt={afterLabel} className="w-full h-full object-cover object-center" draggable={false} />
+          <div className="absolute top-3 md:top-6 right-3 md:right-6 bg-black/85 backdrop-blur-md text-[var(--accent-secondary,#FF2E44)] px-3 md:px-4 py-1.5 md:py-2 text-[10px] md:text-xs font-mono font-bold uppercase tracking-wider border border-[var(--accent-primary,#D70015)]/40 z-10 rounded-lg shadow-lg">
             {afterLabel}
           </div>
         </div>
@@ -81,11 +81,10 @@ export default function BeforeAfterSlider({
           className="absolute inset-0 border-r-2 border-[var(--accent-primary,#D70015)]"
           style={{ clipPath: `polygon(0 0, ${sliderPosition}% 0, ${sliderPosition}% 100%, 0 100%)` }}
         >
-          <img src={beforeImage} alt={beforeLabel} className="w-full h-full object-cover opacity-90" draggable={false} />
-          <div className="absolute top-3 md:top-6 left-3 md:left-6 bg-black/75 backdrop-blur-md text-white px-3 md:px-4 py-1.5 md:py-2 text-[9px] md:text-[10px] font-bold uppercase tracking-widest-plus border border-white/10 z-10 rounded">
+          <img src={beforeImage} alt={beforeLabel} className="w-full h-full object-cover object-center" draggable={false} />
+          <div className="absolute top-3 md:top-6 left-3 md:left-6 bg-black/85 backdrop-blur-md text-white px-3 md:px-4 py-1.5 md:py-2 text-[10px] md:text-xs font-mono font-bold uppercase tracking-wider border border-white/20 z-10 rounded-lg shadow-lg">
             {beforeLabel}
           </div>
-          <div className="absolute inset-0 bg-[var(--accent-primary,#D70015)]/10 mix-blend-multiply pointer-events-none"></div>
         </div>
 
         {/* Slider Handle */}
@@ -93,10 +92,10 @@ export default function BeforeAfterSlider({
           className="absolute top-0 bottom-0 w-1 flex items-center justify-center -translate-x-1/2 pointer-events-none z-20"
           style={{ left: `${sliderPosition}%` }}
         >
-          <div className="w-10 h-10 md:w-14 md:h-14 bg-surface border-2 border-[var(--accent-primary,#D70015)] rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(215,0,21,0.5)] glow-red flex-col gap-0.5 md:gap-1 pointer-events-auto cursor-ew-resize">
-            <div className="flex gap-1">
-              <span className="material-symbols-outlined text-[var(--accent-primary,#D70015)] text-[10px] md:text-xs">chevron_left</span>
-              <span className="material-symbols-outlined text-[var(--accent-primary,#D70015)] text-[10px] md:text-xs">chevron_right</span>
+          <div className="w-10 h-10 md:w-12 md:h-12 bg-black/90 border-2 border-[var(--accent-primary,#D70015)] rounded-full flex items-center justify-center shadow-[0_0_25px_rgba(215,0,21,0.6)] flex-col gap-0.5 pointer-events-auto cursor-ew-resize backdrop-blur-md">
+            <div className="flex gap-0.5">
+              <span className="material-symbols-outlined text-[var(--accent-primary,#D70015)] text-xs">chevron_left</span>
+              <span className="material-symbols-outlined text-[var(--accent-primary,#D70015)] text-xs">chevron_right</span>
             </div>
           </div>
         </div>
