@@ -30,13 +30,13 @@ export default function Home() {
       </Helmet>
 
       {/* =========================================================================
-          SECTION 1: CINEMATIC FULL-BLEED ATHLETE HERO (VICTORY CRIMSON RED)
+          SECTION 1: CINEMATIC LEFT-ANCHORED ATHLETE HERO (PRECISION EDITORIAL UI)
           ========================================================================= */}
       <section
         ref={heroRef}
-        className="relative min-h-[92vh] lg:min-h-screen flex items-center pt-28 pb-20 lg:py-0 bg-[var(--bg-canvas,#080808)] overflow-hidden"
+        className="relative min-h-[95vh] lg:min-h-screen flex items-center pt-32 pb-24 lg:py-0 bg-[var(--bg-canvas,#080808)] overflow-hidden"
       >
-        {/* Full-Bleed Cinematic Background Image with Parallax & Directional Gradient */}
+        {/* Full-Bleed Cinematic Background Image with Parallax & Directional Lighting */}
         <motion.div
           style={{ y: yParallax }}
           className="absolute inset-0 -top-[10%] -bottom-[10%] pointer-events-none select-none"
@@ -46,64 +46,110 @@ export default function Home() {
             alt="Elite Fitness Athlete Deadlifting"
             className="w-full h-full object-cover object-right md:object-center lg:object-right gym-photo-grade"
           />
-          {/* Left-to-right gradient: dark obsidian on the left for maximum text contrast, fading right to showcase the athlete */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[var(--bg-canvas,#080808)] via-[var(--bg-canvas,#080808)]/85 to-[var(--bg-canvas,#080808)]/25 sm:via-[var(--bg-canvas,#080808)]/75 lg:to-transparent" />
+          {/* Directional gradient: Pure dark obsidian on the left 0–45% for crisp text legibility, fading out rightward */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[var(--bg-canvas,#080808)] via-[var(--bg-canvas,#080808)]/95 via-35% md:via-48% to-[var(--bg-canvas,#080808)]/30 lg:to-transparent" />
           {/* Top and bottom gradients for seamless header and section blending */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-canvas,#080808)] via-transparent to-[var(--bg-canvas,#080808)]/60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-canvas,#080808)] via-transparent to-[var(--bg-canvas,#080808)]/70" />
         </motion.div>
 
         {/* Subtle Ambient Crimson Atmosphere Glow */}
-        <div className="absolute top-1/3 -left-32 w-96 h-96 rounded-full bg-[var(--accent-primary,#D70015)]/15 blur-[140px] pointer-events-none" />
+        <div className="absolute top-1/4 -left-20 w-96 h-96 rounded-full bg-[var(--accent-primary,#D70015)]/15 blur-[150px] pointer-events-none" />
 
-        {/* Content Container (Left-Aligned, Pure Minimalism & Zero Clutter) */}
-        <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-          <div className="max-w-2xl lg:max-w-3xl flex flex-col items-start">
+        {/* True Left-Oriented Content Container (Fibonacci Spacing & Editorial Grid) */}
+        <div className="w-full max-w-[1600px] mx-auto px-6 sm:px-10 md:px-14 lg:px-20 xl:px-24 relative z-10">
+          <div className="w-full lg:max-w-[620px] xl:max-w-[720px] flex flex-col items-start text-left">
             
-            {/* Bold Condensed Display H1 Headline */}
-            <motion.h1
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-display font-extrabold uppercase text-[var(--text-primary,#FFFFFF)] leading-[0.92] tracking-tight mb-6"
+            {/* Editorial Kicker */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              className="flex items-center gap-3.5 mb-6"
             >
-              ENGINEER YOUR <br />
-              <span className="text-[var(--accent-primary,#D70015)] drop-shadow-[0_0_35px_rgba(215,0,21,0.45)]">
-                STRONGEST SELF.
+              <span className="w-10 h-[2px] bg-[var(--accent-primary,#D70015)] shadow-[0_0_10px_rgba(215,0,21,0.8)]" />
+              <span className="text-xs font-mono font-bold uppercase tracking-[0.28em] text-[var(--accent-secondary,#FF2E44)]">
+                BHAGALPUR'S PREMIER SANCTUARY
+              </span>
+            </motion.div>
+
+            {/* Bold Condensed Display H1 Headline with Fibonacci Rhythm */}
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              className="font-display font-extrabold uppercase text-white tracking-[-0.03em] leading-[0.88] mb-8 text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-[6.25rem]"
+            >
+              <span className="block text-white">ENGINEER</span>
+              <span className="block text-white">YOUR STRONGEST</span>
+              <span className="block text-[var(--accent-primary,#D70015)] italic drop-shadow-[0_0_40px_rgba(215,0,21,0.5)]">
+                SELF.
               </span>
             </motion.h1>
 
-            {/* High-Clarity Anti-Fluff Subcopy */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="text-base sm:text-lg md:text-xl text-[var(--text-secondary,#A0A0A0)] font-normal leading-relaxed max-w-[48ch] mb-10"
-            >
-              Bhagalpur's 5,000 sq.ft high-performance sanctuary. Olympic barbell platforms, high-energy Zumba, and certified coaching mentorship. Start your transformation with a zero-risk 3-day pass.
-            </motion.p>
-
-            {/* Dual Conversion CTA Cluster */}
+            {/* Sub-headline with Psychological Framing & Vertical Accent Border */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.5, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+              className="border-l-2 border-[var(--accent-primary,#D70015)] pl-5 sm:pl-6 mb-10 max-w-[46ch]"
+            >
+              <p className="text-base sm:text-lg lg:text-xl text-[var(--text-secondary,#D0D0D0)] font-normal leading-[1.65]">
+                5,000 sq.ft of Olympic barbell platforms, high-voltage Zumba, and certified coaching mentorship.
+              </p>
+              <p className="text-xs sm:text-sm font-mono text-[var(--text-muted,#858585)] mt-2 uppercase tracking-wider font-semibold">
+                Zero complex contracts • 100% Risk-Free 3-Day Guest Pass
+              </p>
+            </motion.div>
+
+            {/* Dual Conversion CTA Cluster with Tactile Elevation */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
               className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto"
             >
               <button
                 onClick={() => selectProgramAndScroll('3-Day Free Trial Pass')}
-                className="px-8 py-4 rounded-xl text-xs sm:text-sm font-mono font-extrabold uppercase tracking-wider bg-[var(--accent-primary,#D70015)] text-white hover:bg-white hover:text-black transition-all shadow-[0_0_35px_rgba(215,0,21,0.5)] flex items-center justify-center gap-2 active:scale-95"
+                className="group relative inline-flex items-center justify-center gap-3 px-8 sm:px-9 py-4 sm:py-4.5 rounded-xl text-xs sm:text-sm font-mono font-extrabold uppercase tracking-widest bg-[var(--accent-primary,#D70015)] text-white hover:bg-white hover:text-black transition-all duration-300 shadow-[0_0_35px_rgba(215,0,21,0.5)] active:scale-95 overflow-hidden"
               >
-                <span>Claim Free 3-Day Trial Pass</span>
-                <span className="material-symbols-outlined text-base">arrow_forward</span>
+                <span className="relative z-10">Claim Free 3-Day Trial Pass</span>
+                <span className="material-symbols-outlined text-base relative z-10 transition-transform duration-300 group-hover:translate-x-1">
+                  arrow_forward
+                </span>
               </button>
 
               <a
                 href="#schedule"
-                className="px-7 py-4 rounded-xl text-xs sm:text-sm font-mono font-bold uppercase tracking-wider bg-[var(--bg-surface,#121212)]/80 backdrop-blur-md text-[var(--text-primary,#FFFFFF)] border border-white/15 hover:border-[var(--accent-primary,#D70015)] hover:text-[var(--accent-secondary,#FF2E44)] transition-all flex items-center justify-center gap-2"
+                className="inline-flex items-center justify-center gap-2.5 px-7 py-4 sm:py-4.5 rounded-xl text-xs sm:text-sm font-mono font-bold uppercase tracking-wider bg-white/[0.04] hover:bg-white/[0.09] text-white border border-white/15 hover:border-[var(--accent-primary,#D70015)] hover:text-[var(--accent-secondary,#FF2E44)] backdrop-blur-md transition-all duration-300"
               >
-                <span className="material-symbols-outlined text-base">calendar_month</span>
+                <span className="material-symbols-outlined text-base text-[var(--accent-secondary,#FF2E44)]">
+                  calendar_month
+                </span>
                 <span>View Class Schedule</span>
               </a>
+            </motion.div>
+
+            {/* Editorial Micro-Proof Pillars */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.45 }}
+              className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-10 pt-6 border-t border-white/10 text-[11px] sm:text-xs font-mono text-[var(--text-secondary,#A0A0A0)]"
+            >
+              <span className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-primary,#D70015)] shadow-[0_0_6px_rgba(215,0,21,0.8)]" />
+                5,000 Sq.Ft Sanctuary
+              </span>
+              <span className="text-white/20 hidden sm:inline">•</span>
+              <span className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-primary,#D70015)] shadow-[0_0_6px_rgba(215,0,21,0.8)]" />
+                Certified CSCS & ZIN Leads
+              </span>
+              <span className="text-white/20 hidden sm:inline">•</span>
+              <span className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-primary,#D70015)] shadow-[0_0_6px_rgba(215,0,21,0.8)]" />
+                Kotwali Chowk, Bhagalpur
+              </span>
             </motion.div>
 
           </div>

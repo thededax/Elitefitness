@@ -21,27 +21,16 @@ export default function Navbar() {
   }, [location.pathname, location.hash]);
 
   const navItems = [
-    { label: 'Programs', href: '/#programs-bento' },
-    { label: 'Schedule', href: '/#schedule' },
-    { label: 'Trainers', href: '/#trainers' },
-    { label: 'BMI Tool', href: '/#bmi-calculator' },
-    { label: 'Memberships', href: '/#pricing' },
+    { label: 'Home', href: '/' },
     { label: 'Our Story', href: '/about' },
     { label: 'Reviews', href: '/reviews' },
-    { label: 'Contact', href: '/contact' },
+    { label: 'Contact Us', href: '/contact' },
   ];
 
   const handleNavClick = (href: string) => {
     setMobileMenuOpen(false);
-    if (href.startsWith('/#')) {
-      const id = href.replace('/#', '');
-      if (location.pathname === '/') {
-        const el = document.getElementById(id);
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth' });
-          return;
-        }
-      }
+    if (href === '/' && location.pathname === '/') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
@@ -53,7 +42,7 @@ export default function Navbar() {
           : 'bg-gradient-to-b from-black/85 via-black/45 to-transparent py-5'
       }`}
     >
-      <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         
         {/* Brand Logo */}
         <Link to="/" className="flex items-center gap-2.5 group">
@@ -70,19 +59,28 @@ export default function Navbar() {
           </div>
         </Link>
 
-        {/* Desktop Navigation Links with animated hover underline */}
-        <nav className="hidden lg:flex items-center gap-7">
-          {navItems.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              onClick={() => handleNavClick(item.href)}
-              className="relative text-xs font-mono font-semibold uppercase tracking-wider text-[var(--text-secondary,#A0A0A0)] hover:text-white transition-colors group py-1"
-            >
-              <span>{item.label}</span>
-              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[var(--accent-primary,#D70015)] transition-all duration-300 group-hover:w-full" />
-            </a>
-          ))}
+        {/* Desktop Navigation Links — 4 Core Destinations with High Typographic Precision */}
+        <nav className="hidden lg:flex items-center gap-8 xl:gap-10">
+          {navItems.map((item) => {
+            const isActive = location.pathname === item.href;
+            return (
+              <Link
+                key={item.label}
+                to={item.href}
+                onClick={() => handleNavClick(item.href)}
+                className={`relative text-xs font-mono font-bold uppercase tracking-[0.22em] transition-colors py-1 ${
+                  isActive ? 'text-white' : 'text-[var(--text-secondary,#A0A0A0)] hover:text-white'
+                }`}
+              >
+                <span>{item.label}</span>
+                <span
+                  className={`absolute bottom-0 left-0 h-[2px] bg-[var(--accent-primary,#D70015)] transition-all duration-300 ${
+                    isActive ? 'w-full shadow-[0_0_10px_rgba(215,0,21,0.9)]' : 'w-0 hover:w-full'
+                  }`}
+                />
+              </Link>
+            );
+          })}
         </nav>
 
         {/* Right CTA Cluster */}
@@ -133,17 +131,22 @@ export default function Navbar() {
       {mobileMenuOpen && (
         <div className="lg:hidden bg-[var(--bg-canvas,#080808)]/98 border-b border-white/10 px-6 py-6 transition-all duration-300">
           <nav className="flex flex-col gap-4">
-            {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                onClick={() => handleNavClick(item.href)}
-                className="text-base font-display font-bold uppercase tracking-wider text-[var(--text-primary)] hover:text-[var(--accent-primary,#D70015)] py-1 border-b border-white/5 flex items-center justify-between"
-              >
-                <span>{item.label}</span>
-                <span className="material-symbols-outlined text-sm text-[var(--text-muted)]">east</span>
-              </a>
-            ))}
+            {navItems.map((item) => {
+              const isActive = location.pathname === item.href;
+              return (
+                <Link
+                  key={item.label}
+                  to={item.href}
+                  onClick={() => handleNavClick(item.href)}
+                  className={`text-base font-display font-bold uppercase tracking-wider py-1.5 border-b border-white/5 flex items-center justify-between transition-colors ${
+                    isActive ? 'text-[var(--accent-primary,#D70015)]' : 'text-[var(--text-primary)] hover:text-[var(--accent-primary,#D70015)]'
+                  }`}
+                >
+                  <span>{item.label}</span>
+                  <span className="material-symbols-outlined text-sm text-[var(--text-muted)]">east</span>
+                </Link>
+              );
+            })}
 
             <div className="pt-4 flex flex-col gap-3">
               <button
