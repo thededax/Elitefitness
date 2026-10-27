@@ -34,15 +34,15 @@ export default function Programs() {
           <div className="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-background-dark/50"></div>
           <div className="absolute inset-0 bg-background-dark/40"></div>
         </motion.div>
-        <div className="max-w-[1400px] mx-auto px-6 relative z-10 pt-28 md:pt-32 pb-12 md:pb-16">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 relative z-10 pt-20 sm:pt-28 md:pt-32 pb-8 sm:pb-12 md:pb-16">
           <div className="flex flex-col gap-0 items-start max-w-4xl">
             <motion.span 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-primary font-bold tracking-[0.5em] uppercase text-sm mb-6 flex items-center gap-4"
+              className="text-primary font-bold tracking-[0.25em] sm:tracking-[0.5em] uppercase text-xs sm:text-sm mb-4 sm:mb-6 flex items-center gap-3 sm:gap-4"
             >
-              <span className="w-12 h-[2px] bg-primary"></span>
+              <span className="w-8 sm:w-12 h-[2px] bg-primary"></span>
               Elevate Your Performance
             </motion.span>
             <h1>
@@ -50,7 +50,7 @@ export default function Programs() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
-                className="block text-[10vw] lg:text-[9rem] font-headline leading-[0.85] tracking-tighter text-white uppercase"
+                className="block text-4xl sm:text-7xl lg:text-[9rem] font-headline leading-[0.88] tracking-tighter text-white uppercase"
               >
                 Our Elite
               </motion.span>
@@ -58,7 +58,7 @@ export default function Programs() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
-                className="block text-[10vw] lg:text-[9rem] font-headline leading-[0.85] tracking-tighter text-white uppercase"
+                className="block text-4xl sm:text-7xl lg:text-[9rem] font-headline leading-[0.88] tracking-tighter text-white uppercase"
               >
                 <span className="text-primary italic">Programs</span>
               </motion.span>
@@ -67,7 +67,7 @@ export default function Programs() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.9 }}
-              className="mt-6 md:mt-10 text-slate-400 text-base md:text-xl max-w-2xl font-light leading-relaxed"
+              className="mt-4 sm:mt-6 md:mt-10 text-slate-400 text-sm sm:text-base md:text-xl max-w-2xl font-light leading-relaxed"
             >
               Experience premium fitness training with our expert-led programs designed for high performance and lasting results in an obsidian-class environment.
             </motion.p>
@@ -172,23 +172,23 @@ export default function Programs() {
               >
                 <div className="absolute -top-8 md:-top-10 left-0 text-6xl md:text-8xl font-headline text-white/5 group-hover:text-primary/10 transition-colors uppercase select-none">{program.num}</div>
                 <div className="bg-surface relative overflow-hidden magazine-shadow border-b-4 border-transparent group-hover:border-primary transition-all duration-500 h-full flex flex-col">
-                  <div className="h-64 overflow-hidden relative shrink-0">
+                  <div className="h-44 sm:h-56 lg:h-64 overflow-hidden relative shrink-0">
                     <ImageWithSkeleton alt={program.title} className="w-full h-full object-cover group-hover:scale-110 transition-all duration-700" src={program.img} />
                     <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
-                    <div className="absolute top-6 right-6 bg-primary text-white w-12 h-12 flex items-center justify-center red-glow-strong">
-                      <span className="material-symbols-outlined text-2xl" style={{ transform: "translateZ(30px)" }}>{program.icon}</span>
+                    <div className="absolute top-4 sm:top-6 right-4 sm:right-6 bg-primary text-white w-10 sm:w-12 h-10 sm:h-12 flex items-center justify-center red-glow-strong">
+                      <span className="material-symbols-outlined text-xl sm:text-2xl" style={{ transform: "translateZ(30px)" }}>{program.icon}</span>
                     </div>
                   </div>
-                  <div className="p-6 md:p-8 flex-grow flex flex-col" style={{ transform: "translateZ(50px)" }}>
-                    <h4 className="text-2xl md:text-3xl font-headline text-white mb-4 tracking-wider uppercase">{program.title}</h4>
-                    <p className="text-slate-400 text-xs md:text-sm leading-relaxed mb-6 md:mb-8 flex-grow">
+                  <div className="p-4 sm:p-6 md:p-8 flex-grow flex flex-col" style={{ transform: "translateZ(50px)" }}>
+                    <h4 className="text-xl sm:text-2xl md:text-3xl font-headline text-white mb-2 sm:mb-4 tracking-wider uppercase">{program.title}</h4>
+                    <p className="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-8 flex-grow">
                       {program.desc}
                     </p>
-                    <div className="flex items-center justify-between border-t border-white/5 pt-6 mt-auto">
-                      <span className="text-[var(--accent-secondary,#FF2E44)] font-headline text-2xl tracking-wider">{program.price}</span>
+                    <div className="flex items-center justify-between border-t border-white/5 pt-4 sm:pt-6 mt-auto">
+                      <span className="text-[var(--accent-secondary,#FF2E44)] font-headline text-lg sm:text-2xl tracking-wider">{program.price}</span>
                       <button 
                         onClick={() => selectProgramAndScroll(program.title)} 
-                        className="bg-[var(--accent-primary,#D70015)] hover:bg-white text-white hover:text-black transition-all px-8 py-3 text-xs font-bold uppercase tracking-widest-plus inline-block shadow-md"
+                        className="bg-[var(--accent-primary,#D70015)] hover:bg-white text-white hover:text-black transition-all px-5 sm:px-8 py-2 sm:py-3 text-xs font-bold uppercase tracking-widest-plus inline-block shadow-md"
                       >
                         Join
                       </button>
@@ -207,17 +207,17 @@ export default function Programs() {
             transition={{ duration: 0.6 }}
             className="group relative lg:mt-0 transition-transform duration-500 hover:-translate-y-2 shrink-0 w-[85vw] sm:w-[65vw] md:w-auto snap-center"
           >
-            <div className="bg-surface relative overflow-hidden magazine-shadow border-2 border-dashed border-white/10 group-hover:border-primary/50 flex flex-col items-center justify-center p-8 md:p-12 text-center h-full min-h-[400px] md:min-h-[500px] transition-all duration-500">
-              <div className="w-20 h-20 rounded-full border border-primary/30 flex items-center justify-center mb-8 group-hover:bg-primary transition-all duration-500 red-glow">
-                <span className="material-symbols-outlined text-4xl text-primary group-hover:text-white">corporate_fare</span>
+            <div className="bg-surface relative overflow-hidden magazine-shadow border-2 border-dashed border-white/10 group-hover:border-primary/50 flex flex-col items-center justify-center p-6 sm:p-8 md:p-12 text-center h-full min-h-[300px] sm:min-h-[400px] md:min-h-[500px] transition-all duration-500">
+              <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-full border border-primary/30 flex items-center justify-center mb-4 sm:mb-8 group-hover:bg-primary transition-all duration-500 red-glow">
+                <span className="material-symbols-outlined text-2xl sm:text-4xl text-primary group-hover:text-white">corporate_fare</span>
               </div>
-              <h4 className="text-3xl font-headline text-white mb-4 tracking-wider uppercase">Corporate Wellness</h4>
-              <p className="text-slate-500 text-sm leading-relaxed mb-10 max-w-xs">
+              <h4 className="text-xl sm:text-3xl font-headline text-white mb-2 sm:mb-4 tracking-wider uppercase">Corporate Wellness</h4>
+              <p className="text-slate-500 text-xs sm:text-sm leading-relaxed mb-6 sm:mb-10 max-w-xs">
                 Tailored performance programs designed for high-impact teams and executive health.
               </p>
               <button 
                 onClick={() => selectProgramAndScroll('Corporate Wellness Inquiries')} 
-                className="border border-[var(--accent-primary,#D70015)] hover:bg-[var(--accent-primary,#D70015)] hover:text-white transition-all px-10 py-4 text-xs font-bold uppercase tracking-widest-plus text-white"
+                className="border border-[var(--accent-primary,#D70015)] hover:bg-[var(--accent-primary,#D70015)] hover:text-white transition-all px-6 sm:px-10 py-3 sm:py-4 text-xs font-bold uppercase tracking-widest-plus text-white"
               >
                 Inquire Now
               </button>
@@ -270,16 +270,16 @@ export default function Programs() {
           <p className="text-white/90 font-medium max-w-2xl text-lg lg:text-xl mb-12">
             Join 500+ members who have already transformed their lives at Elite Fitness. Your first session is on us.
           </p>
-          <div className="flex flex-wrap justify-center gap-6">
+          <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-6 w-full sm:w-auto">
             <button 
               onClick={() => selectProgramAndScroll('3-Day Free Trial Pass')} 
-              className="bg-[var(--accent-primary,#D70015)] text-white hover:bg-white hover:text-black transition-all px-14 py-6 text-sm font-bold uppercase tracking-widest-plus shadow-[0_0_30px_rgba(215,0,21,0.4)]"
+              className="bg-[var(--accent-primary,#D70015)] text-white hover:bg-white hover:text-black transition-all px-6 sm:px-14 py-4 sm:py-6 text-xs sm:text-sm font-bold uppercase tracking-widest-plus shadow-[0_0_30px_rgba(215,0,21,0.4)] w-full sm:w-auto"
             >
               Get Started Free
             </button>
             <a 
               href="#pricing" 
-              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-black transition-all px-14 py-6 text-sm font-bold uppercase tracking-widest-plus flex items-center justify-center"
+              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-black transition-all px-6 sm:px-14 py-4 sm:py-6 text-xs sm:text-sm font-bold uppercase tracking-widest-plus flex items-center justify-center w-full sm:w-auto"
             >
               View Pricing
             </a>

@@ -85,24 +85,24 @@ export default function Reviews() {
           <div className="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-background-dark/50"></div>
           <div className="absolute inset-0 bg-background-dark/40"></div>
         </motion.div>
-        <div className="relative z-10 px-4 md:px-6 lg:px-24 pt-28 md:pt-32 pb-12 md:pb-16 w-full">
-        <div className="flex flex-col lg:flex-row gap-16 items-center">
-          <div className="flex-1 space-y-8 relative z-10">
+        <div className="relative z-10 px-4 md:px-6 lg:px-24 pt-20 sm:pt-28 md:pt-32 pb-8 sm:pb-12 md:pb-16 w-full">
+        <div className="flex flex-col lg:flex-row gap-8 sm:gap-12 lg:gap-16 items-center">
+          <div className="flex-1 space-y-4 sm:space-y-8 relative z-10">
             <div>
               <motion.span 
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2 }}
-                className="text-primary font-bold tracking-[0.5em] uppercase text-sm mb-6 flex items-center gap-4"
+                className="text-primary font-bold tracking-[0.25em] sm:tracking-[0.5em] uppercase text-xs sm:text-sm mb-3 sm:mb-6 flex items-center gap-3 sm:gap-4"
               >
-                <span className="w-12 h-[2px] bg-primary"></span>
+                <span className="w-8 sm:w-12 h-[2px] bg-primary"></span>
                 Member Voices
               </motion.span>
               <motion.h1 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
-                className="font-headline text-4xl md:text-8xl lg:text-[10rem] leading-[0.85] text-white tracking-tighter uppercase mb-2"
+                className="font-headline text-3xl sm:text-6xl md:text-8xl lg:text-[10rem] leading-[0.88] text-white tracking-tighter uppercase mb-1 sm:mb-2"
               >
                 Our Community
               </motion.h1>
@@ -110,7 +110,7 @@ export default function Reviews() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
-                className="font-headline text-3xl md:text-7xl lg:text-[8rem] leading-[0.85] text-primary italic tracking-tighter uppercase"
+                className="font-headline text-2xl sm:text-5xl md:text-7xl lg:text-[8rem] leading-[0.88] text-primary italic tracking-tighter uppercase"
               >
                 Speaks Louder
               </motion.h2>
@@ -119,7 +119,7 @@ export default function Reviews() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 }}
-              className="text-slate-400 text-base md:text-lg max-w-xl leading-relaxed"
+              className="text-slate-400 text-sm sm:text-base md:text-lg max-w-xl leading-relaxed"
             >
               Discover why 500+ members have chosen The Elite Zumba as their sanctuary of transformation. Your journey to peak performance starts with shared inspiration.
             </motion.p>
@@ -127,12 +127,12 @@ export default function Reviews() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1 }}
-              className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6 pt-4"
+              className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-6 pt-2 sm:pt-4"
             >
-              <button className="bg-primary hover:bg-white hover:text-primary transition-all px-6 sm:px-12 py-3.5 sm:py-5 text-sm font-bold uppercase tracking-widest-plus w-full sm:w-auto text-center">
+              <button className="bg-primary hover:bg-white hover:text-primary transition-all px-6 sm:px-12 py-3 sm:py-5 text-xs sm:text-sm font-bold uppercase tracking-widest-plus w-full sm:w-auto text-center">
                 Write a Review
               </button>
-              <button className="border border-white/20 hover:border-primary hover:bg-primary transition-all px-6 sm:px-10 py-3.5 sm:py-4 text-xs font-bold uppercase tracking-widest-plus w-full sm:w-auto text-center">
+              <button className="border border-white/20 hover:border-primary hover:bg-primary transition-all px-6 sm:px-10 py-3 sm:py-4 text-xs font-bold uppercase tracking-widest-plus w-full sm:w-auto text-center">
                 View Gallery
               </button>
             </motion.div>
@@ -145,16 +145,16 @@ export default function Reviews() {
             className="relative group w-full sm:w-auto"
           >
             <div className="absolute -inset-4 bg-primary/10 blur-3xl rounded-full opacity-30 group-hover:opacity-50 transition-opacity"></div>
-            <div className="relative bg-surface p-6 sm:p-8 md:p-12 rounded-none border border-white/10 glow-red w-full sm:min-w-[300px] md:min-w-[360px] flex flex-col items-center max-w-full overflow-hidden">
+            <div className="relative bg-surface p-4 sm:p-8 md:p-12 rounded-none border border-white/10 glow-red w-full sm:min-w-[300px] md:min-w-[360px] flex flex-col items-center max-w-full overflow-hidden">
               <div className="absolute -top-6 md:-top-12 -right-4 md:-right-12 text-6xl md:text-9xl font-headline text-white/5 select-none leading-none pointer-events-none">4.9</div>
-              <div className="text-[80px] md:text-[120px] font-headline text-white leading-none mb-2 relative">
+              <div className="text-[60px] sm:text-[80px] md:text-[120px] font-headline text-white leading-none mb-2 relative">
                 4.9<span className="text-primary">/</span>5
               </div>
-              <div className="flex gap-2 mb-8">
-                {[1,2,3,4].map(i => <span key={i} className="material-symbols-outlined text-primary text-2xl fill-1">star</span>)}
-                <span className="material-symbols-outlined text-primary text-2xl fill-1">star_half</span>
+              <div className="flex gap-1.5 sm:gap-2 mb-6 sm:mb-8">
+                {[1,2,3,4].map(i => <span key={i} className="material-symbols-outlined text-primary text-xl sm:text-2xl fill-1">star</span>)}
+                <span className="material-symbols-outlined text-primary text-xl sm:text-2xl fill-1">star_half</span>
               </div>
-              <div className="w-full space-y-5">
+              <div className="w-full space-y-3.5 sm:space-y-5">
                 <div className="flex flex-col gap-2">
                   <div className="flex justify-between text-[10px] uppercase tracking-widest font-bold text-white/50">
                     <span>Excellent</span>
@@ -174,8 +174,8 @@ export default function Reviews() {
                   </div>
                 </div>
               </div>
-              <div className="mt-10 pt-8 border-t border-white/5 w-full text-center">
-                <p className="text-xs uppercase tracking-[0.3em] font-bold text-white/80">500+ Verified Reviews</p>
+              <div className="mt-6 sm:mt-10 pt-5 sm:pt-8 border-t border-white/5 w-full text-center">
+                <p className="text-[11px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.3em] font-bold text-white/80">500+ Verified Reviews</p>
               </div>
             </div>
           </motion.div>

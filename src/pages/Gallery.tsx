@@ -92,21 +92,21 @@ export default function Gallery() {
           <div className="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-background-dark/50"></div>
           <div className="absolute inset-0 bg-background-dark/40"></div>
         </motion.div>
-        <div className="relative z-10 px-4 md:px-6 lg:px-24 pt-28 md:pt-32 pb-12 md:pb-16">
+        <div className="relative z-10 px-4 md:px-6 lg:px-24 pt-20 sm:pt-28 md:pt-32 pb-8 sm:pb-12 md:pb-16">
           <motion.span 
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-primary font-bold tracking-[0.5em] uppercase text-xs mb-4 flex items-center gap-4"
+            className="text-primary font-bold tracking-[0.25em] sm:tracking-[0.5em] uppercase text-xs mb-3 sm:mb-4 flex items-center gap-3 sm:gap-4"
           >
-            <span className="w-12 h-[2px] bg-primary"></span>
+            <span className="w-8 sm:w-12 h-[2px] bg-primary"></span>
             Visual Standards
           </motion.span>
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="text-4xl md:text-7xl lg:text-[9rem] font-headline leading-[0.85] tracking-tighter uppercase mb-6 md:mb-8"
+            className="text-3xl sm:text-6xl md:text-7xl lg:text-[9rem] font-headline leading-[0.88] tracking-tighter uppercase mb-4 sm:mb-8"
           >
             STUDIO <span className="text-primary italic">MOMENTS</span>
           </motion.h1>
@@ -114,27 +114,27 @@ export default function Gallery() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
-            className="max-w-2xl mt-4 md:mt-6"
+            className="max-w-2xl mt-3 sm:mt-6"
           >
-            <p className="text-slate-400 text-base md:text-lg leading-relaxed">
+            <p className="text-slate-400 text-sm sm:text-base md:text-lg leading-relaxed">
               Step inside Bhagalpur's most energetic fitness destination. A high-contrast visual journey through transformation, grit, and rhythmic energy.
             </p>
           </motion.div>
         </div>
       </section>
 
-      <section className="px-4 md:px-6 lg:px-24 mb-10 md:mb-16 overflow-x-auto">
+      <section className="px-4 md:px-6 lg:px-24 mb-4 sm:mb-10 md:mb-16 overflow-x-auto hide-scrollbar">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8 }}
-          className="flex items-center gap-4 whitespace-nowrap min-w-max pb-4"
+          className="flex items-center gap-2 sm:gap-4 whitespace-nowrap min-w-max pb-2 sm:pb-4"
         >
-          <button className="bg-primary text-white px-8 py-3 text-[10px] font-bold uppercase tracking-widest-plus transition-all">All Experience</button>
-          <button className="bg-surface hover:bg-primary/20 text-white/60 hover:text-white px-8 py-3 text-[10px] font-bold uppercase tracking-widest-plus transition-all">Zumba Energy</button>
-          <button className="bg-surface hover:bg-primary/20 text-white/60 hover:text-white px-8 py-3 text-[10px] font-bold uppercase tracking-widest-plus transition-all">Strength Zone</button>
-          <button className="bg-surface hover:bg-primary/20 text-white/60 hover:text-white px-8 py-3 text-[10px] font-bold uppercase tracking-widest-plus transition-all">Cardio Lab</button>
-          <button className="bg-surface hover:bg-primary/20 text-white/60 hover:text-white px-8 py-3 text-[10px] font-bold uppercase tracking-widest-plus transition-all">Interior</button>
+          <button className="bg-primary text-white px-4 sm:px-8 py-2 sm:py-3 text-[10px] font-bold uppercase tracking-widest-plus transition-all">All Experience</button>
+          <button className="bg-surface hover:bg-primary/20 text-white/60 hover:text-white px-4 sm:px-8 py-2 sm:py-3 text-[10px] font-bold uppercase tracking-widest-plus transition-all">Zumba Energy</button>
+          <button className="bg-surface hover:bg-primary/20 text-white/60 hover:text-white px-4 sm:px-8 py-2 sm:py-3 text-[10px] font-bold uppercase tracking-widest-plus transition-all">Strength Zone</button>
+          <button className="bg-surface hover:bg-primary/20 text-white/60 hover:text-white px-4 sm:px-8 py-2 sm:py-3 text-[10px] font-bold uppercase tracking-widest-plus transition-all">Cardio Lab</button>
+          <button className="bg-surface hover:bg-primary/20 text-white/60 hover:text-white px-4 sm:px-8 py-2 sm:py-3 text-[10px] font-bold uppercase tracking-widest-plus transition-all">Interior</button>
         </motion.div>
       </section>
 

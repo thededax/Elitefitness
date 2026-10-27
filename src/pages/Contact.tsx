@@ -51,12 +51,12 @@ export default function Contact() {
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-canvas,#070705)] via-transparent to-transparent"></div>
         </motion.div>
         
-        <div className="relative z-10 max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 pt-28 md:pt-36 pb-12 w-full text-center">
+        <div className="relative z-10 max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-28 md:pt-36 pb-8 sm:pb-12 w-full text-center">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-[var(--bg-surface,#121212)] text-[var(--accent-secondary,#FF2E44)] text-xs font-mono font-semibold uppercase tracking-wider mb-4"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-[var(--bg-surface,#121212)] text-[var(--accent-secondary,#FF2E44)] text-xs font-mono font-semibold uppercase tracking-wider mb-3 sm:mb-4"
           >
             <span>DIRECT CONNECT</span>
           </motion.div>
@@ -64,7 +64,7 @@ export default function Contact() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="font-display font-extrabold text-4xl sm:text-6xl lg:text-8xl leading-none tracking-tight text-[var(--text-primary,#FFFFFF)] uppercase mb-4"
+            className="font-display font-extrabold text-3xl sm:text-5xl lg:text-8xl leading-none tracking-tight text-[var(--text-primary,#FFFFFF)] uppercase mb-3 sm:mb-4"
           >
             CONNECT WITH <span className="text-[var(--accent-primary,#D70015)]">ELITE</span>
           </motion.h1>
@@ -72,7 +72,7 @@ export default function Contact() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="max-w-xl mx-auto text-[var(--text-secondary,#A0A0A0)] text-sm sm:text-base font-normal leading-relaxed"
+            className="max-w-xl mx-auto text-[var(--text-secondary,#A0A0A0)] text-xs sm:text-sm md:text-base font-normal leading-relaxed"
           >
             Visit our 5,000 sq.ft sanctuary at Savitri Tower, Bhagalpur or message our desk team on WhatsApp for instant trial booking.
           </motion.p>
@@ -80,8 +80,8 @@ export default function Contact() {
       </section>
 
       {/* Main Grid */}
-      <section className="relative py-12 md:py-24 max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
+      <section className="relative py-8 sm:py-12 md:py-24 max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-stretch">
           
           {/* Form */}
           <motion.div 
@@ -89,11 +89,11 @@ export default function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="lg:col-span-7 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface,#121212)] p-6 sm:p-8 md:p-10 magazine-shadow flex flex-col justify-between"
+            className="lg:col-span-7 rounded-xl sm:rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface,#121212)] p-4 sm:p-6 md:p-10 magazine-shadow flex flex-col justify-between"
           >
             <div>
-              <div className="flex items-center justify-between pb-4 mb-6 border-b border-white/10">
-                <h3 className="text-2xl font-display font-bold text-[var(--text-primary)] uppercase tracking-wide">
+              <div className="flex items-center justify-between pb-3 sm:pb-4 mb-4 sm:mb-6 border-b border-white/10">
+                <h3 className="text-xl sm:text-2xl font-display font-bold text-[var(--text-primary)] uppercase tracking-wide">
                   SEND AN <span className="text-[var(--accent-primary,#D70015)]">INQUIRY</span>
                 </h3>
                 <span className="text-[10px] font-mono text-[var(--text-muted)] uppercase">Direct Response</span>
@@ -133,6 +133,7 @@ export default function Contact() {
                       <input 
                         id={phoneId}
                         required
+                        inputMode="tel"
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         className="w-full bg-[var(--bg-surface-elevated,#181818)] border border-white/10 rounded-lg p-3 text-base md:text-sm text-[var(--text-primary)] focus:border-[var(--accent-primary,#D70015)] focus:outline-none placeholder:text-[var(--text-muted)]" 
@@ -176,16 +177,16 @@ export default function Contact() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="lg:col-span-5 flex flex-col justify-between gap-6"
           >
-            <div className="rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface,#121212)] p-6 sm:p-8">
-              <span className="text-xs font-mono font-bold uppercase tracking-widest text-[var(--accent-secondary,#FF2E44)] mb-3 block">
+            <div className="rounded-xl sm:rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface,#121212)] p-4 sm:p-6 md:p-8">
+              <span className="text-[11px] sm:text-xs font-mono font-bold uppercase tracking-widest text-[var(--accent-secondary,#FF2E44)] mb-2 sm:mb-3 block">
                 Direct Connection
               </span>
-              <p className="text-2xl sm:text-3xl font-mono font-bold text-white mb-1">+91 90655 16492</p>
-              <p className="text-xs font-mono text-[var(--text-secondary)] mb-6">Open Mon – Sat: 6:00 AM – 10:00 PM</p>
+              <p className="text-xl sm:text-2xl md:text-3xl font-mono font-bold text-white mb-1">+91 90655 16492</p>
+              <p className="text-[11px] sm:text-xs font-mono text-[var(--text-secondary)] mb-4 sm:mb-6">Open Mon – Sat: 6:00 AM – 10:00 PM</p>
 
-              <div className="flex flex-col sm:flex-row gap-3">
+              <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3">
                 <a 
-                  className="flex-1 flex items-center justify-center gap-2 bg-[#25D366] hover:bg-white hover:text-[#25D366] text-white py-3 px-4 rounded-xl transition-all text-xs font-mono font-bold uppercase tracking-wider" 
+                  className="flex-1 flex items-center justify-center gap-2 bg-[#25D366] hover:bg-white hover:text-[#25D366] text-white py-3 px-4 rounded-xl transition-all text-xs font-mono font-bold uppercase tracking-wider min-h-[44px]" 
                   href="https://wa.me/919065516492"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -194,7 +195,7 @@ export default function Contact() {
                   <span>WhatsApp</span>
                 </a>
                 <a 
-                  className="flex-1 flex items-center justify-center gap-2 bg-[var(--bg-surface-elevated,#181818)] border border-white/20 hover:border-[var(--accent-primary,#D70015)] hover:text-[var(--accent-secondary,#FF2E44)] text-white py-3 px-4 rounded-xl transition-all text-xs font-mono font-bold uppercase tracking-wider" 
+                  className="flex-1 flex items-center justify-center gap-2 bg-[var(--bg-surface-elevated,#181818)] border border-white/20 hover:border-[var(--accent-primary,#D70015)] hover:text-[var(--accent-secondary,#FF2E44)] text-white py-3 px-4 rounded-xl transition-all text-xs font-mono font-bold uppercase tracking-wider min-h-[44px]" 
                   href="tel:+919065516492"
                 >
                   <span className="material-symbols-outlined text-sm">call</span>
@@ -203,17 +204,17 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface,#121212)] p-6 sm:p-8">
-              <div className="flex items-center gap-3 mb-3">
-                <span className="material-symbols-outlined text-[var(--accent-primary,#D70015)] text-2xl">location_on</span>
-                <h4 className="font-display font-bold text-xl uppercase text-white">THE SANCTUARY</h4>
+            <div className="rounded-xl sm:rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface,#121212)] p-4 sm:p-6 md:p-8">
+              <div className="flex items-center gap-3 mb-2.5 sm:mb-3">
+                <span className="material-symbols-outlined text-[var(--accent-primary,#D70015)] text-xl sm:text-2xl">location_on</span>
+                <h4 className="font-display font-bold text-lg sm:text-xl uppercase text-white">THE SANCTUARY</h4>
               </div>
               <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
                 5th Floor, Savitri Tower, Above Vishal Mega Mart, Kotwali Chowk, Bhagalpur, Bihar 812001
               </p>
             </div>
 
-            <div className="rounded-2xl border border-[var(--border-subtle)] overflow-hidden h-52 relative">
+            <div className="rounded-xl sm:rounded-2xl border border-[var(--border-subtle)] overflow-hidden h-44 sm:h-52 relative">
               <iframe 
                 title="Location Map"
                 allowFullScreen 

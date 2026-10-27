@@ -56,19 +56,19 @@ export default function TrialBookingHub() {
   };
 
   return (
-    <section className="relative py-16 md:py-28 bg-[var(--bg-canvas,#080808)] border-t border-[var(--border-subtle)]" id="trial-booking">
+    <section className="relative py-10 sm:py-16 md:py-24 bg-[var(--bg-canvas,#080808)] border-t border-[var(--border-subtle)]" id="trial-booking">
       <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--accent-secondary,#FF2E44)] text-xs font-mono font-semibold uppercase tracking-wider mb-3">
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12 md:mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--accent-secondary,#FF2E44)] text-xs font-mono font-semibold uppercase tracking-wider mb-2.5 sm:mb-3">
             <span>06 / FAST PASS ACCESS</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-6xl font-display font-extrabold uppercase text-[var(--text-primary,#FFFFFF)] leading-none">
+          <h2 className="text-2xl sm:text-4xl lg:text-6xl font-display font-extrabold uppercase text-[var(--text-primary,#FFFFFF)] leading-none">
             CLAIM YOUR FREE <br />
             <span className="text-[var(--accent-primary,#D70015)]">3-DAY TRIAL PASS</span>
           </h2>
-          <p className="text-xs sm:text-sm text-[var(--text-secondary,#A0A0A0)] mt-3">
+          <p className="text-xs sm:text-sm text-[var(--text-secondary,#A0A0A0)] mt-2 sm:mt-3">
             Experience our 5,000 sq.ft strength floor, high-energy Zumba sessions, and verified coaching before making any commitment.
           </p>
         </div>
@@ -79,7 +79,7 @@ export default function TrialBookingHub() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
-            className="mb-8 max-w-md mx-auto p-3.5 rounded-lg bg-[var(--accent-primary,#D70015)] text-white text-xs font-mono font-bold text-center flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(215,0,21,0.5)]"
+            className="mb-6 sm:mb-8 max-w-md mx-auto p-3 sm:p-3.5 rounded-lg bg-[var(--accent-primary,#D70015)] text-white text-xs font-mono font-bold text-center flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(215,0,21,0.5)]"
           >
             <span className="material-symbols-outlined text-sm">check_circle</span>
             <span>{notification} — Form updated below</span>
@@ -87,16 +87,16 @@ export default function TrialBookingHub() {
         )}
 
         {/* 12-Column Split Conversion Hub */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-stretch">
           
           {/* Left Column (6 cols): High-Converting Lead Form */}
-          <div className="lg:col-span-6 rounded-2xl border border-[var(--border-accent,rgba(215,0,21,0.45))] bg-[var(--bg-surface,#121212)] p-6 sm:p-8 md:p-10 flex flex-col justify-between magazine-shadow">
+          <div className="lg:col-span-6 rounded-xl sm:rounded-2xl border border-[var(--border-accent,rgba(215,0,21,0.45))] bg-[var(--bg-surface,#121212)] p-4 sm:p-6 md:p-10 flex flex-col justify-between magazine-shadow">
             <div>
-              <div className="flex items-center justify-between mb-6 pb-4 border-b border-white/10">
-                <h3 className="text-xl sm:text-2xl font-display font-bold uppercase text-[var(--text-primary)]">
+              <div className="flex items-center justify-between mb-4 sm:mb-6 pb-3 sm:pb-4 border-b border-white/10">
+                <h3 className="text-lg sm:text-2xl font-display font-bold uppercase text-[var(--text-primary)]">
                   Trial Reservation Form
                 </h3>
-                <span className="text-[10px] font-mono px-2.5 py-0.5 rounded bg-[var(--accent-primary,#D70015)]/20 text-[var(--accent-secondary,#FF2E44)] border border-[var(--accent-primary)]/40 font-bold">
+                <span className="text-[9px] sm:text-[10px] font-mono px-2 sm:px-2.5 py-0.5 rounded bg-[var(--accent-primary,#D70015)]/20 text-[var(--accent-secondary,#FF2E44)] border border-[var(--accent-primary)]/40 font-bold">
                   Instant Pass Confirmation
                 </span>
               </div>
@@ -231,43 +231,43 @@ export default function TrialBookingHub() {
           <div className="lg:col-span-6 flex flex-col justify-between gap-6">
             
             {/* Facility & Direct Contact Card */}
-            <div className="rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface,#121212)] p-6 sm:p-8">
-              <div className="flex items-center gap-3 mb-4">
-                <span className="material-symbols-outlined text-[var(--accent-primary,#D70015)] text-2xl">location_on</span>
+            <div className="rounded-xl sm:rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface,#121212)] p-4 sm:p-6 md:p-8">
+              <div className="flex items-center gap-3 mb-3 sm:mb-4">
+                <span className="material-symbols-outlined text-[var(--accent-primary,#D70015)] text-xl sm:text-2xl">location_on</span>
                 <div>
-                  <h4 className="text-xl font-display font-bold uppercase text-[var(--text-primary)]">
+                  <h4 className="text-lg sm:text-xl font-display font-bold uppercase text-[var(--text-primary)]">
                     SAVITRI TOWER FACILITY
                   </h4>
-                  <p className="text-xs text-[var(--text-secondary)]">Bhagalpur's Premier Fitness Sanctuary</p>
+                  <p className="text-[11px] sm:text-xs text-[var(--text-secondary)]">Bhagalpur's Premier Fitness Sanctuary</p>
                 </div>
               </div>
 
-              <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed mb-6 font-normal">
+              <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed mb-4 sm:mb-6 font-normal">
                 5th Floor, Savitri Tower, Above Vishal Mega Mart, Kotwali Chowk, Bhagalpur, Bihar 812001.
               </p>
 
               {/* Operating Hours Table */}
-              <div className="rounded-xl bg-[var(--bg-canvas,#080808)] p-4 border border-white/5 mb-6">
-                <span className="text-[10px] font-mono uppercase text-[var(--accent-secondary,#FF2E44)] font-bold block mb-2">
+              <div className="rounded-xl bg-[var(--bg-canvas,#080808)] p-3 sm:p-4 border border-white/5 mb-4 sm:mb-6">
+                <span className="text-[10px] font-mono uppercase text-[var(--accent-secondary,#FF2E44)] font-bold block mb-1.5 sm:mb-2">
                   Operating Hours:
                 </span>
                 <div className="flex justify-between items-center text-xs font-mono text-[var(--text-primary)] py-1 border-b border-white/5">
                   <span>Monday – Saturday</span>
                   <span className="text-[var(--accent-secondary,#FF2E44)] font-bold">06:00 AM – 10:00 PM</span>
                 </div>
-                <div className="flex justify-between items-center text-xs font-mono text-[var(--text-primary)] py-1 pt-2">
+                <div className="flex justify-between items-center text-xs font-mono text-[var(--text-primary)] py-1 pt-1.5 sm:pt-2">
                   <span>Sunday</span>
                   <span className="text-[var(--text-secondary)]">08:00 AM – 12:00 PM (Open Gym)</span>
                 </div>
               </div>
 
               {/* Action Buttons */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
                 <a
                   href="https://wa.me/919065516492"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[#25D366] text-white text-xs font-mono font-bold uppercase tracking-wider hover:bg-white hover:text-[#25D366] transition-all shadow-md"
+                  className="flex items-center justify-center gap-2 py-3 px-3 sm:px-4 rounded-xl bg-[#25D366] text-white text-xs font-mono font-bold uppercase tracking-wider hover:bg-white hover:text-[#25D366] transition-all shadow-md min-h-[44px]"
                 >
                   <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path></svg>
                   <span>Chat on WhatsApp</span>
@@ -275,7 +275,7 @@ export default function TrialBookingHub() {
 
                 <a
                   href="tel:+919065516492"
-                  className="flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[var(--bg-surface-elevated,#181818)] border border-white/20 text-white text-xs font-mono font-bold uppercase tracking-wider hover:border-[var(--accent-primary,#D70015)] hover:text-[var(--accent-secondary,#FF2E44)] transition-all shadow-md"
+                  className="flex items-center justify-center gap-2 py-3 px-3 sm:px-4 rounded-xl bg-[var(--bg-surface-elevated,#181818)] border border-white/20 text-white text-xs font-mono font-bold uppercase tracking-wider hover:border-[var(--accent-primary,#D70015)] hover:text-[var(--accent-secondary,#FF2E44)] transition-all shadow-md min-h-[44px]"
                 >
                   <span className="material-symbols-outlined text-sm">call</span>
                   <span>Call +91 90655 16492</span>
@@ -284,7 +284,7 @@ export default function TrialBookingHub() {
             </div>
 
             {/* Embedded Interactive Map */}
-            <div className="rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface,#121212)] overflow-hidden h-[220px] sm:h-[260px] relative">
+            <div className="rounded-xl sm:rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface,#121212)] overflow-hidden h-[180px] sm:h-[220px] md:h-[260px] relative">
               <iframe
                 title="Elite Fitness Studio Location"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3606.5866750345674!2d86.9719369150119!3d25.24151798387431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f04bc225c5d33f%3A0xc66513233346d03d!2sElite%20Fitness!5e0!3m2!1sen!2sin!4v1655000000000!5m2!1sen!2sin"

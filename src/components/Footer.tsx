@@ -13,16 +13,16 @@ export default function Footer() {
   const y = useTransform(scrollYProgress, [0, 1], [-15, 10]);
 
   return (
-    <footer ref={footerRef} className="relative bg-[var(--bg-canvas,#080808)] border-t border-[var(--border-subtle)] pt-16 md:pt-24 pb-28 md:pb-12 px-4 sm:px-6 lg:px-12 overflow-hidden select-none">
-      <div className="max-w-[1320px] mx-auto flex flex-col gap-12 md:gap-16">
+    <footer ref={footerRef} className="relative bg-[var(--bg-canvas,#080808)] border-t border-[var(--border-subtle)] pt-10 sm:pt-16 md:pt-24 pb-24 sm:pb-28 md:pb-12 px-4 sm:px-6 lg:px-12 overflow-hidden select-none">
+      <div className="max-w-[1320px] mx-auto flex flex-col gap-8 sm:gap-12 md:gap-16">
         
         {/* Top Section: Tagline + Navigation Columns */}
-        <div className="flex flex-col lg:flex-row justify-between items-start gap-10 lg:gap-16">
+        <div className="flex flex-col lg:flex-row justify-between items-start gap-6 sm:gap-10 lg:gap-16">
           <div className="max-w-md">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-[var(--bg-surface,#121212)] text-[var(--accent-secondary,#FF2E44)] text-[11px] font-mono font-semibold uppercase tracking-wider mb-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-[var(--bg-surface,#121212)] text-[var(--accent-secondary,#FF2E44)] text-[10px] sm:text-[11px] font-mono font-semibold uppercase tracking-wider mb-3 sm:mb-4">
               <span>Bhagalpur's Premier Fitness Sanctuary</span>
             </div>
-            <h3 className="text-3xl md:text-5xl font-display font-extrabold text-white tracking-tight uppercase leading-none mb-4">
+            <h3 className="text-2xl sm:text-3xl md:text-5xl font-display font-extrabold text-white tracking-tight uppercase leading-none mb-3 sm:mb-4">
               ENGINEER YOUR <br />
               <span className="text-[var(--accent-primary,#D70015)]">STRONGEST SELF.</span>
             </h3>
@@ -73,28 +73,28 @@ export default function Footer() {
         </div>
 
         {/* Middle Section: High-Contrast Display Wordmark */}
-        <motion.div style={{ y }} className="w-full flex justify-center py-6 my-2 border-y border-white/5">
-          <h2 className="text-[17vw] sm:text-[18vw] md:text-[18vw] lg:text-[19vw] xl:text-[230px] font-display font-extrabold tracking-tighter uppercase leading-[0.75] text-white/95 hover:text-white transition-colors text-center select-none w-full flex items-center justify-center gap-1 md:gap-3">
+        <motion.div style={{ y }} className="w-full flex justify-center py-4 sm:py-6 my-1 sm:my-2 border-y border-white/5 overflow-hidden">
+          <h2 className="text-[15vw] sm:text-[18vw] md:text-[18vw] lg:text-[19vw] xl:text-[230px] font-display font-extrabold tracking-tighter uppercase leading-[0.75] text-white/95 hover:text-white transition-colors text-center select-none w-full flex items-center justify-center gap-1 md:gap-3 max-w-full">
             <span>ELI</span>
             <span style={{ WebkitTextStroke: '2px rgba(215, 0, 21, 0.75)', color: 'transparent' }}>TE</span>
-            <span className="w-3 h-3 md:w-6 md:h-6 rounded-full bg-[var(--accent-primary,#D70015)] inline-block self-baseline mt-4 md:mt-8 ml-1 shadow-[0_0_25px_rgba(215,0,21,0.9)]"></span>
+            <span className="w-2 sm:w-3 md:w-6 h-2 sm:h-3 md:h-6 rounded-full bg-[var(--accent-primary,#D70015)] inline-block self-baseline mt-2 sm:mt-4 md:mt-8 ml-0.5 sm:ml-1 shadow-[0_0_25px_rgba(215,0,21,0.9)]"></span>
           </h2>
         </motion.div>
 
         {/* Bottom Bar: Brand Logo & Legal Copyright */}
-        <div className="pt-2 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-mono text-[var(--text-muted)]">
-          <div className="flex items-center gap-4">
+        <div className="pt-2 flex flex-col md:flex-row justify-between items-center gap-3 sm:gap-4 text-xs font-mono text-[var(--text-muted)] text-center md:text-left">
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
             <Link to="/" className="flex items-center gap-2">
               <span className="material-symbols-outlined text-[var(--accent-primary,#D70015)] text-xl">fitness_center</span>
-              <span className="text-white text-base font-display font-bold tracking-widest uppercase">ELITE FITNESS</span>
+              <span className="text-white text-sm sm:text-base font-display font-bold tracking-widest uppercase">ELITE FITNESS</span>
             </Link>
-            <span className="text-white/20">|</span>
+            <span className="hidden sm:inline text-white/20">|</span>
             <p className="text-[10px] uppercase tracking-wider">
               © {new Date().getFullYear()} Elite Zumba & Fitness Studio. All Rights Reserved.
             </p>
           </div>
 
-          <div className="flex gap-6 text-[11px] font-mono">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-[11px] font-mono">
             <a href="https://wa.me/919065516492" className="hover:text-[var(--accent-secondary,#FF2E44)] transition-colors">WhatsApp</a>
             <a href="tel:+919065516492" className="hover:text-[var(--accent-secondary,#FF2E44)] transition-colors">+91 90655 16492</a>
             <span className="text-[var(--text-muted)]">Bhagalpur, Bihar</span>
