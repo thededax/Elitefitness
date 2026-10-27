@@ -19,16 +19,7 @@ const trainers: Trainer[] = [
     experience: '8+ Years',
     specialty: 'Barbell Hypertrophy & Olympic Lifting',
     achievements: 'Coached 120+ body recomposition athletes in Bihar',
-    image: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=2070&auto=format&fit=crop'
-  },
-  {
-    name: 'Neha Sharma',
-    role: 'Director of Dance & Zumba Fitness',
-    certifications: ['ZIN Certified Lead', 'Aerobics Master'],
-    experience: '7+ Years',
-    specialty: 'High-Energy Cardio Dance & Toning',
-    achievements: 'Led 1,500+ daily sessions with 99% 5-star member satisfaction',
-    image: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=2070&auto=format&fit=crop'
+    image: '/images/trainers/vikram-singh.png'
   },
   {
     name: 'Arjun Das',
@@ -37,7 +28,16 @@ const trainers: Trainer[] = [
     experience: '6+ Years',
     specialty: 'Metabolic Conditioning & Core Power',
     achievements: 'Specialist in athletic stamina and fast fat-loss circuits',
-    image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=2070&auto=format&fit=crop'
+    image: '/images/trainers/arjun-das.png'
+  },
+  {
+    name: 'Neha Sharma',
+    role: 'Director of Dance & Zumba Fitness',
+    certifications: ['ZIN Certified Lead', 'Aerobics Master'],
+    experience: '7+ Years',
+    specialty: 'High-Energy Cardio Dance & Toning',
+    achievements: 'Led 1,500+ daily sessions with 99% 5-star member satisfaction',
+    image: '/images/trainers/neha-sharma.png'
   },
   {
     name: 'Pooja Patel',
@@ -46,7 +46,7 @@ const trainers: Trainer[] = [
     experience: '5+ Years',
     specialty: 'Spinal Decompression & Posture Correction',
     achievements: 'Restored pain-free movement for 200+ sedentary professionals',
-    image: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=2070&auto=format&fit=crop'
+    image: '/images/trainers/pooja-patel.png'
   }
 ];
 
