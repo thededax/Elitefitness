@@ -19,35 +19,52 @@ export default function About() {
         <title>Our Story | Elite Zumba & Fitness Studio — Bhagalpur</title>
         <meta name="description" content="Learn about Elite Fitness Studio's journey since 2018. From a community gathering to Bhagalpur's premier fitness destination with 500+ members and 12+ expert trainers." />
       </Helmet>
-      <section ref={heroRef} className="relative min-h-[45vh] md:h-[80vh] flex items-center overflow-hidden bg-background-dark">
-        <motion.div style={{ y }} className="absolute inset-0 -top-[15%] -bottom-[15%]">
-          {/* PLACEHOLDER — replace with real photo: gym interior wide shot showing full floor, mirrors, and equipment, morning light */}
-          <img 
-            src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop"
-            alt="Elite Studio Interior" 
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-background-dark via-background-dark/80 to-background-dark/40"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-background-dark/50"></div>
-          <div className="absolute inset-0 bg-background-dark/30"></div>
+      <section ref={heroRef} className="relative min-h-[55vh] md:h-[82vh] flex items-center overflow-hidden bg-[var(--bg-canvas,#080808)]">
+        <motion.div style={{ y }} className="absolute inset-0 -top-[10%] -bottom-[10%]">
+          {/* Looping Ambient Background Video */}
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            className="w-full h-full object-cover filter contrast-[1.06] brightness-[0.92]"
+          >
+            <source src="/videos/our-story-bg.mp4" type="video/mp4" />
+          </video>
+
+          {/* Left-anchored editorial shadow/vignette ensuring 'Our Story' text is 100% visible while preserving video clarity */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/45 to-transparent pointer-events-none" />
+          
+          {/* Top & bottom subtle fade into navbar & canvas */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-canvas,#080808)] via-transparent to-black/60 pointer-events-none" />
+
+          {/* Subtle red ambient glow accent */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_50%,rgba(215,0,21,0.14),transparent_55%)] pointer-events-none" />
         </motion.div>
-        <div className="relative z-20 px-6 lg:px-24 w-full pt-24 md:pt-0">
-          <div className="flex flex-col gap-0 max-w-4xl">
-            <motion.span 
+
+        <div className="relative z-20 px-6 sm:px-10 lg:px-24 w-full pt-28 md:pt-0">
+          <div className="flex flex-col gap-0 max-w-4xl relative">
+            
+            {/* Subtle black card backdrop behind 'Our Story' text to guarantee crisp contrast */}
+            <div className="absolute -inset-4 sm:-inset-6 bg-black/40 backdrop-blur-[2px] rounded-3xl -z-10 pointer-events-none border border-white/5" />
+
+            <motion.div 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-primary font-bold tracking-[0.5em] uppercase text-sm mb-6 flex items-center gap-4"
+              className="inline-flex items-center gap-3 px-3.5 py-1.5 rounded-full border border-[var(--border-subtle)] bg-black/75 backdrop-blur-md text-[var(--accent-secondary,#FF2E44)] text-xs font-mono font-semibold uppercase tracking-wider mb-5 w-fit"
             >
-              <span className="w-12 h-[2px] bg-primary"></span>
-              Since 2018
-            </motion.span>
+              <span className="w-2 h-2 rounded-full bg-[var(--accent-primary,#D70015)] animate-pulse" />
+              <span>SINCE 2018 • THE SANCTUARY</span>
+            </motion.div>
+
             <h1>
               <motion.span 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
-                className="block text-[15vw] md:text-[12vw] lg:text-[10rem] font-headline leading-[0.85] tracking-tighter text-white"
+                className="block text-[15vw] md:text-[10vw] lg:text-[8rem] font-display font-extrabold leading-[0.88] tracking-tighter text-white uppercase drop-shadow-[0_4px_24px_rgba(0,0,0,0.85)]"
               >
                 OUR
               </motion.span>
@@ -55,18 +72,19 @@ export default function About() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
-                className="block text-[15vw] md:text-[12vw] lg:text-[10rem] font-headline leading-[0.85] tracking-tighter text-white"
+                className="block text-[15vw] md:text-[10vw] lg:text-[8rem] font-display font-extrabold leading-[0.88] tracking-tighter uppercase drop-shadow-[0_0_35px_rgba(215,0,21,0.45)]"
               >
-                <span className="text-primary italic">STORY</span>
+                <span className="text-[var(--accent-primary,#D70015)] italic">STORY</span>
               </motion.span>
             </h1>
+
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.9 }}
-              className="mt-6 md:mt-10 text-slate-400 text-base md:text-xl max-w-2xl leading-relaxed font-light"
+              transition={{ delay: 0.8 }}
+              className="mt-6 md:mt-8 text-[var(--text-secondary,#D0D0D0)] text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed font-normal bg-black/55 backdrop-blur-md p-4 sm:p-5 rounded-xl border border-white/10"
             >
-              From a humble community park gathering to Bhagalpur's premier high-energy fitness sanctuary. We didn't just build a gym; we built a movement.
+              From a humble community park gathering to Bhagalpur's premier high-energy fitness sanctuary. We didn't just build a gym; we built an uncompromising movement.
             </motion.p>
           </div>
         </div>
