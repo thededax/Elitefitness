@@ -192,8 +192,8 @@ export default function Home() {
             >
               <div className="rounded-2xl overflow-hidden border border-[var(--border-subtle)] bg-[var(--bg-surface,#121212)] aspect-video sm:aspect-square relative magazine-shadow">
                 <img
-                  src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop"
-                  alt="Elite Fitness Facility Interior"
+                  src="/images/built-on-passion.jpg"
+                  alt="Elite Fitness Barbell Strength Training and Biomechanics Coaching"
                   loading="lazy"
                   decoding="async"
                   className="w-full h-full object-cover gym-photo-grade"
