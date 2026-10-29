@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, Outlet, Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../lib/AuthContext';
-import { gymDb } from '../../lib/supabase';
+import { gymDb, isRealSupabaseConfigured } from '../../lib/supabase';
 
 export default function MemberLayout() {
   const { user, logout } = useAuth();
@@ -68,6 +68,12 @@ export default function MemberLayout() {
               </div>
               <div className="text-[10px] font-mono text-[var(--accent-secondary,#FF2E44)]">
                 Active Member
+              </div>
+              <div className="flex items-center gap-1.5 mt-1">
+                <span className={`w-1.5 h-1.5 rounded-full ${isRealSupabaseConfigured ? 'bg-emerald-400 animate-pulse' : 'bg-yellow-400'}`} />
+                <span className={`text-[9px] font-mono ${isRealSupabaseConfigured ? 'text-emerald-400' : 'text-yellow-400'}`}>
+                  {isRealSupabaseConfigured ? 'Supabase Cloud Live' : 'Local Sandbox'}
+                </span>
               </div>
             </div>
           </div>

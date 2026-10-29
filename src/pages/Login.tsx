@@ -45,7 +45,9 @@ export default function Login() {
     }
   };
 
-  const handleDemoLogin = (demoEmail: string) => {
+  const handleDemoLogin = (demoEmail: string, demoPassword?: string) => {
+    setEmail(demoEmail);
+    if (demoPassword) setPassword(demoPassword);
     switchToDemoAccount(demoEmail);
     handleSuccessfulAuth(demoEmail);
   };
@@ -165,7 +167,7 @@ export default function Login() {
               <div className="grid grid-cols-2 gap-2 text-left">
                 <button
                   type="button"
-                  onClick={() => handleDemoLogin('owner@elitegym.com')}
+                  onClick={() => handleDemoLogin('owner@elitegym.com', 'EliteOwner@2026')}
                   className="p-2.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[var(--accent-primary,#D70015)] text-left transition-all group"
                 >
                   <div className="text-[11px] font-display font-bold uppercase text-white group-hover:text-[var(--accent-secondary,#FF2E44)] flex items-center gap-1">
@@ -174,11 +176,14 @@ export default function Login() {
                   <div className="text-[10px] font-mono text-[var(--text-secondary,#A0A0A0)] truncate">
                     owner@elitegym.com
                   </div>
+                  <div className="text-[9px] font-mono text-white/30 truncate mt-0.5">
+                    Pw: EliteOwner@2026
+                  </div>
                 </button>
 
                 <button
                   type="button"
-                  onClick={() => handleDemoLogin('rahul@elitegym.com')}
+                  onClick={() => handleDemoLogin('rahul@elitegym.com', 'Rahul@2026')}
                   className="p-2.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[var(--accent-primary,#D70015)] text-left transition-all group"
                 >
                   <div className="text-[11px] font-display font-bold uppercase text-white group-hover:text-[var(--accent-secondary,#FF2E44)] flex items-center gap-1">
@@ -187,11 +192,14 @@ export default function Login() {
                   <div className="text-[10px] font-mono text-[var(--text-secondary,#A0A0A0)] truncate">
                     rahul@elitegym.com
                   </div>
+                  <div className="text-[9px] font-mono text-white/30 truncate mt-0.5">
+                    Pw: Rahul@2026
+                  </div>
                 </button>
 
                 <button
                   type="button"
-                  onClick={() => handleDemoLogin('priya@elitegym.com')}
+                  onClick={() => handleDemoLogin('priya@elitegym.com', 'Priya@2026')}
                   className="p-2.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-yellow-500/50 text-left transition-all group"
                 >
                   <div className="text-[11px] font-display font-bold uppercase text-white group-hover:text-yellow-400 flex items-center gap-1">
@@ -200,11 +208,14 @@ export default function Login() {
                   <div className="text-[10px] font-mono text-[var(--text-secondary,#A0A0A0)] truncate">
                     priya@elitegym.com
                   </div>
+                  <div className="text-[9px] font-mono text-white/30 truncate mt-0.5">
+                    Pw: Priya@2026
+                  </div>
                 </button>
 
                 <button
                   type="button"
-                  onClick={() => handleDemoLogin('amit@elitegym.com')}
+                  onClick={() => handleDemoLogin('amit@elitegym.com', 'Amit@2026')}
                   className="p-2.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-red-500/50 text-left transition-all group"
                 >
                   <div className="text-[11px] font-display font-bold uppercase text-white group-hover:text-red-400 flex items-center gap-1">
@@ -212,6 +223,9 @@ export default function Login() {
                   </div>
                   <div className="text-[10px] font-mono text-[var(--text-secondary,#A0A0A0)] truncate">
                     amit@elitegym.com
+                  </div>
+                  <div className="text-[9px] font-mono text-white/30 truncate mt-0.5">
+                    Pw: Amit@2026
                   </div>
                 </button>
               </div>

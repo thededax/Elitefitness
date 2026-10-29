@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { gymDb } from './supabase';
+import { gymDb, supabase, isRealSupabaseConfigured } from './supabase';
 import type { Profile, UserRole } from './database.types';
 
 interface AuthContextType {
@@ -24,20 +24,115 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   useEffect(() => {
-    refreshUser();
-    setIsLoading(false);
+    let isMounted = true;
+
+    async function initializeSession() {
+      if (isRealSupabaseConfigured) {
+        try {
+          const { data: { session } } = await supabase.auth.getSession();
+          if (session?.user && isMounted) {
+            const { data: profile } = await supabase
+              .from('profiles')
+              .select('*')
+              .eq('id', session.user.id)
+              .maybeSingle();
+
+            if (profile && isMounted) {
+              const cloudProfile = profile as Profile;
+              setUser(cloudProfile);
+              gymDb.setCurrentUser(cloudProfile.id);
+              setIsLoading(false);
+              return;
+            }
+          }
+        } catch (err) {
+          console.warn('Supabase auth session lookup notice:', err);
+        }
+      }
+
+      if (isMounted) {
+        refreshUser();
+        setIsLoading(false);
+      }
+    }
+
+    initializeSession();
+
+    // Listen for auth state transitions in real Supabase
+    const { data: authListener } = isRealSupabaseConfigured
+      ? supabase.auth.onAuthStateChange(async (_event, session) => {
+          if (session?.user && isMounted) {
+            try {
+              const { data: profile } = await supabase
+                .from('profiles')
+                .select('*')
+                .eq('id', session.user.id)
+                .maybeSingle();
+              if (profile && isMounted) {
+                const cloudProfile = profile as Profile;
+                setUser(cloudProfile);
+                gymDb.setCurrentUser(cloudProfile.id);
+              }
+            } catch (err) {
+              console.warn('Profile fetch after auth state change notice:', err);
+            }
+          }
+        })
+      : { data: { subscription: { unsubscribe: () => {} } } };
+
+    return () => {
+      isMounted = false;
+      authListener?.subscription?.unsubscribe();
+    };
   }, []);
 
-  const login = async (email: string, _password?: string) => {
-    const res = gymDb.loginWithEmail(email);
+  const login = async (email: string, password?: string) => {
+    const normalized = email.trim().toLowerCase();
+
+    // 1. Attempt Supabase Auth when cloud credentials and a password are provided
+    if (isRealSupabaseConfigured && password) {
+      try {
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email: normalized,
+          password,
+        });
+
+        if (!error && data.user) {
+          const { data: profile } = await supabase
+            .from('profiles')
+            .select('*')
+            .eq('id', data.user.id)
+            .maybeSingle();
+
+          if (profile) {
+            const cloudProfile = profile as Profile;
+            setUser(cloudProfile);
+            gymDb.setCurrentUser(cloudProfile.id);
+            return { success: true };
+          }
+        }
+      } catch (err) {
+        console.warn('Supabase authentication error:', err);
+      }
+    }
+
+    // 2. Seamless local/demo database authentication fallback
+    const res = gymDb.loginWithEmail(normalized);
     if (res.success && res.user) {
       setUser({ ...res.user });
       return { success: true };
     }
-    return { success: false, error: res.error || 'Failed to authenticate.' };
+    return { success: false, error: res.error || 'Failed to authenticate credentials.' };
   };
 
-  const logout = () => {
+  const logout = async () => {
+    if (isRealSupabaseConfigured) {
+      try {
+        await supabase.auth.signOut();
+      } catch (err) {
+        console.warn('Supabase signOut error:', err);
+      }
+    }
     gymDb.logout();
     setUser(null);
   };
