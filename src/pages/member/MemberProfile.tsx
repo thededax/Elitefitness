@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../lib/AuthContext';
-import { gymDb } from '../../lib/supabase';
+import { gymDb, supabase, isRealSupabaseConfigured } from '../../lib/supabase';
 import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
 
@@ -24,17 +24,33 @@ export default function MemberProfile() {
 
   if (!user) return null;
 
-  const handleSaveProfile = (e: React.FormEvent) => {
+  const handleSaveProfile = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSaving(true);
 
-    gymDb.updateProfile(user.id, {
+    const updates = {
       full_name: fullName.trim(),
       phone: phone.trim() || null,
       emergency_contact: emergencyContact.trim() || null,
       fitness_goals: fitnessGoals.trim() || null,
       avatar_url: avatarUrl.trim() || null,
-    });
+    };
+
+    gymDb.updateProfile(user.id, updates);
+
+    if (isRealSupabaseConfigured && user.id) {
+      try {
+        await supabase
+          .from('profiles')
+          .update({
+            ...updates,
+            updated_at: new Date().toISOString(),
+          })
+          .eq('id', user.id);
+      } catch (err) {
+        console.warn('Supabase profile update warning:', err);
+      }
+    }
 
     refreshUser();
     setIsSaving(false);
@@ -42,12 +58,27 @@ export default function MemberProfile() {
     setTimeout(() => setSuccessMsg(null), 4000);
   };
 
-  const handleChangePassword = (e: React.FormEvent) => {
+  const handleChangePassword = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newPassword || newPassword.length < 6) {
       setPasswordMsg('Password must contain at least 6 characters.');
       return;
     }
+
+    if (isRealSupabaseConfigured) {
+      try {
+        const { error } = await supabase.auth.updateUser({ password: newPassword });
+        if (error) {
+          setPasswordMsg(`Update failed: ${error.message}`);
+          return;
+        }
+      } catch (err: unknown) {
+        const msg = err instanceof Error ? err.message : 'Password update failed';
+        setPasswordMsg(`Update failed: ${msg}`);
+        return;
+      }
+    }
+
     setPasswordMsg('Password updated successfully.');
     setCurrentPassword('');
     setNewPassword('');

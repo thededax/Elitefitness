@@ -1067,6 +1067,19 @@ class LocalGymDatabase {
     this.saveState();
     return newProfile;
   }
+
+  public upsertProfile(profile: Profile): Profile {
+    const idx = this.state.profiles.findIndex(
+      (p) => p.id === profile.id || p.email.toLowerCase() === profile.email.toLowerCase()
+    );
+    if (idx >= 0) {
+      this.state.profiles[idx] = { ...this.state.profiles[idx], ...profile };
+    } else {
+      this.state.profiles.push(profile);
+    }
+    this.saveState();
+    return profile;
+  }
 }
 
 // Global Singleton for database operations

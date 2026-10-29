@@ -7,6 +7,13 @@ interface AuthContextType {
   role: UserRole | null;
   isLoading: boolean;
   login: (email: string, password?: string) => Promise<{ success: boolean; error?: string }>;
+  signUp: (data: {
+    full_name: string;
+    email: string;
+    password: string;
+    phone?: string;
+    fitness_goals?: string;
+  }) => Promise<{ success: boolean; error?: string }>;
   logout: () => void;
   refreshUser: () => void;
   switchToDemoAccount: (email: string) => void;
@@ -125,6 +132,88 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return { success: false, error: res.error || 'Failed to authenticate credentials.' };
   };
 
+  const signUp = async (data: {
+    full_name: string;
+    email: string;
+    password: string;
+    phone?: string;
+    fitness_goals?: string;
+  }) => {
+    const normalized = data.email.trim().toLowerCase();
+
+    // 1. Attempt Supabase Cloud signup if credentials are configured
+    if (isRealSupabaseConfigured) {
+      try {
+        const { data: authData, error: authError } = await supabase.auth.signUp({
+          email: normalized,
+          password: data.password,
+          options: {
+            data: {
+              full_name: data.full_name.trim(),
+              phone: data.phone?.trim() || null,
+              fitness_goals: data.fitness_goals?.trim() || null,
+              role: 'member',
+            },
+          },
+        });
+
+        if (authError) {
+          if (authError.message.toLowerCase().includes('already registered')) {
+            return { success: false, error: 'An account with this email address already exists. Please sign in.' };
+          }
+          console.warn('Supabase cloud signup notice:', authError.message);
+        } else if (authData.user) {
+          // Check for auto-created profile via PostgreSQL on_auth_user_created trigger
+          const { data: profile } = await supabase
+            .from('profiles')
+            .select('*')
+            .eq('id', authData.user.id)
+            .maybeSingle();
+
+          const resolvedProfile: Profile = (profile as Profile) || {
+            id: authData.user.id,
+            full_name: data.full_name.trim(),
+            email: normalized,
+            phone: data.phone?.trim() || null,
+            role: 'member',
+            is_active: true,
+            fitness_goals: data.fitness_goals?.trim() || null,
+            created_at: new Date().toISOString(),
+            updated_at: new Date().toISOString(),
+          };
+
+          gymDb.upsertProfile(resolvedProfile);
+          gymDb.setCurrentUser(resolvedProfile.id);
+          setUser(resolvedProfile);
+          return { success: true };
+        }
+      } catch (err) {
+        console.warn('Supabase signup error:', err);
+      }
+    }
+
+    // 2. Seamless local/demo database fallback
+    try {
+      const localProfile = gymDb.createMember({
+        full_name: data.full_name.trim(),
+        email: normalized,
+        phone: data.phone?.trim() || undefined,
+        plan_id: 'plan-starter-30',
+        payment_method: 'cash',
+      });
+      if (data.fitness_goals) {
+        localProfile.fitness_goals = data.fitness_goals.trim();
+        gymDb.updateProfile(localProfile.id, { fitness_goals: data.fitness_goals.trim() });
+      }
+      gymDb.setCurrentUser(localProfile.id);
+      setUser(localProfile);
+      return { success: true };
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : 'Registration failed.';
+      return { success: false, error: msg };
+    }
+  };
+
   const logout = async () => {
     if (isRealSupabaseConfigured) {
       try {
@@ -151,6 +240,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         role: user ? user.role : null,
         isLoading,
         login,
+        signUp,
         logout,
         refreshUser,
         switchToDemoAccount,

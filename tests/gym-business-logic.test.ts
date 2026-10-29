@@ -180,4 +180,57 @@ describe('Elite Gym Business Logic & Invariants', () => {
       expect(metrics.calculated_at).toBeDefined();
     });
   });
+
+  describe('7. New Gym User Registration & Profile Upsert', () => {
+    it('registers a new member profile with active membership and prevents email collision', () => {
+      const newMember = gymDb.createMember({
+        full_name: 'Rohit Sharma',
+        email: 'rohit.new@elitegym.com',
+        phone: '+91 99887 76655',
+        plan_id: 'plan-starter-30',
+        payment_method: 'cash',
+      });
+
+      expect(newMember.id).toBeDefined();
+      expect(newMember.email).toBe('rohit.new@elitegym.com');
+      expect(newMember.role).toBe('member');
+
+      // Membership assigned
+      const mship = gymDb.getMemberCurrentMembership(newMember.id);
+      expect(mship).not.toBeNull();
+      expect(mship?.status).toBe('active');
+
+      // Prevents duplicate registration
+      expect(() => {
+        gymDb.createMember({
+          full_name: 'Duplicate Rohit',
+          email: 'rohit.new@elitegym.com',
+        });
+      }).toThrow('already exists');
+    });
+
+    it('upserts profile seamlessly updating attributes without duplicating entries', () => {
+      const profile = gymDb.upsertProfile({
+        id: 'user-upsert-test',
+        full_name: 'Test Upsert',
+        email: 'upsert@elitegym.com',
+        role: 'member',
+        is_active: true,
+        fitness_goals: 'Initial goal',
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+      });
+
+      expect(profile.id).toBe('user-upsert-test');
+
+      // Update goal
+      const updated = gymDb.upsertProfile({
+        ...profile,
+        fitness_goals: 'Advanced strength hypertrophy',
+      });
+
+      expect(updated.fitness_goals).toBe('Advanced strength hypertrophy');
+      expect(gymDb.getProfile('user-upsert-test')?.fitness_goals).toBe('Advanced strength hypertrophy');
+    });
+  });
 });

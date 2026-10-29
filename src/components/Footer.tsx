@@ -50,10 +50,10 @@ export default function Footer() {
                 SANCTUARY
               </h4>
               <ul className="flex flex-col gap-2.5 text-xs font-mono text-[var(--text-secondary,#A0A0A0)] uppercase tracking-wider">
-                <li><a href="/#trial-booking" className="hover:text-white transition-colors">Free Trial Pass</a></li>
+                <li><Link to="/login?mode=signin" className="text-white hover:text-[var(--accent-secondary,#FF2E44)] transition-colors">Member Sign In</Link></li>
+                <li><Link to="/login?mode=signup" className="text-[var(--accent-secondary,#FF2E44)] hover:text-white transition-colors font-bold">Join / Sign Up</Link></li>
+                <li><Link to="/check-in" className="hover:text-white transition-colors">Entrance QR Check-In</Link></li>
                 <li><Link to="/about" className="hover:text-white transition-colors">Our Story</Link></li>
-                <li><Link to="/login" className="text-white hover:text-[var(--accent-secondary,#FF2E44)] transition-colors">Member Portal</Link></li>
-                <li><Link to="/check-in" className="hover:text-white transition-colors">QR Check-In</Link></li>
                 <li><Link to="/reviews" className="hover:text-white transition-colors">Wall of Fame</Link></li>
                 <li><a href="https://wa.me/919065516492" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">WhatsApp Desk</a></li>
                 <li><a href="tel:+919065516492" className="hover:text-white transition-colors">Call Direct</a></li>
