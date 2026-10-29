@@ -84,7 +84,15 @@ export default function Navbar() {
         </nav>
 
         {/* Right CTA Cluster */}
-        <div className="hidden sm:flex items-center gap-4">
+        <div className="hidden sm:flex items-center gap-3">
+          <Link
+            to="/login"
+            className="px-3.5 py-2 rounded-lg text-xs font-mono font-bold uppercase tracking-wider text-white/80 hover:text-white hover:bg-white/5 border border-white/10 transition-all flex items-center gap-1.5"
+          >
+            <span className="material-symbols-outlined text-sm">account_circle</span>
+            <span>Portal</span>
+          </Link>
+
           <a
             href="https://wa.me/919065516492"
             target="_blank"
@@ -149,6 +157,15 @@ export default function Navbar() {
             })}
 
             <div className="pt-4 flex flex-col gap-3">
+              <Link
+                to="/login"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full py-3 rounded-lg text-xs font-mono font-bold uppercase tracking-wider bg-white/10 hover:bg-white/20 text-white flex items-center justify-center gap-2 border border-white/10"
+              >
+                <span className="material-symbols-outlined text-sm">account_circle</span>
+                <span>Member Portal / Sign In</span>
+              </Link>
+
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
